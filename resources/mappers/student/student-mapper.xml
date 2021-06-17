@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="student">
+
+ 	<insert id="insertStudent">
+ 		INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,'유병승','0101234567',
+ 		'PRINCE@COM','경기도',DEFAULT)
+ 	</insert>
+ 
+ 	<insert id="insertStudentName" parameterType="string">
+ 		INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,#{name},'0101234567',
+ 		'PRINCE@COM','경기도',DEFAULT)
+ 	</insert>
+ 
+ 	<insert id="insertStudentEmail" parameterType="string">
+ 		INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,'낙타','0101234567',
+ 		#{email},'경기도',DEFAULT)
+ 	</insert>
+ 
+ 	<insert id="insertParamAll" parameterType="student">
+ 		INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,
+ 					#{studentName},
+ 					#{studentTel},
+ 					#{studentEmail},
+ 					#{studentAddr},DEFAULT)
+ 	</insert>
+ 	<insert id="insertParamMap" parameterType="map">
+ 		INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,
+ 					#{name},
+ 					#{phone},
+ 					#{email},
+ 					#{addr},DEFAULT) 	
+ 	</insert>
+ 
+ 	<update id="updateStudent" parameterType="student">
+ 		UPDATE STUDENT SET STUDENT_TEL=#{studentTel},STUDENT_ADDR=#{studentAddr}
+ 		WHERE STUDENT_NAME=#{studentName}
+ 	</update>
+ 
+ 	<delete id="deleteStudent" parameterType="string">
+ 		DELETE FROM STUDENT WHERE STUDENT_NAME=#{n}
+ 	</delete>
+ 
+ 	<!-- 기본 자료형을 반환하는 select문 작성하기 -->
+ 	<!-- select문은 반드시 반드시 반드시! 반환형설정해줘야함.
+ 		1. resultType속성 -> 기본자료형, 선언한 클래스, jre클래스들을 선언할 때..
+ 			* 자동으로 컬럼과 vo객체를 매핑 *기준 -> 컬럼명==멤버변수명 대소문자 구별없음
+ 		2. resultMap속성 -> vo객체의 멤버변수명이랑 컬럼명이 다른것을 매칭시키는 객체
+ 		  1) <resultMap>태그로 resultMap을 만듬 -> column과 멤버변수를 매칭시키는 기능
+ 		  2) resultMap태그의 id속성의 값을 resultMap속성에 대입
+ 	 -->
+ 	<select id="selectCount" resultType="_int">
+ 		SELECT COUNT(*) FROM STUDENT
+ 	</select>
+ 	
+ 
+ 	<!-- <select id="selectStudent" resultType="com.mybatis.model.vo.Student" --> 
+ 	<select id="selectStudent" resultMap="studentMap"
+ 	parameterType="_int">
+ 	<!-- 	SELECT student_no as studentNo,
+ 			   student_name as studentName,
+ 			   student_tel as studentTel,
+ 			   student_email as studentEmail,
+ 			   student_addr as studentAddr,
+ 			   reg_date as regDate -->
+ 	   SELECT *
+ 	   FROM STUDENT WHERE STUDENT_NO=#{no}
+ 	</select>
+ 
+ 	<!-- <select id="selectStudentList" resultType="com.mybatis.model.vo.Student"> -->
+ 	<select id="selectStudentList" resultMap="studentMap">
+ 		<!-- SELECT student_no as studentNo,
+ 			   student_name as studentName,
+ 			   student_tel as studentTel,
+ 			   student_email as studentEmail,
+ 			   student_addr as studentAddr,
+ 			   reg_date as regDate -->
+ 		SELECT *
+ 		FROM  STUDENT
+ 	</select>
+ 	
+ 	<resultMap type="com.mybatis.model.vo.Student" id="studentMap">
+ 		<result column="student_no" property="studentNo"/>
+ 		<result column="student_name" property="studentName"/>
+ 		<result column="student_Tel" property="studentTel"/>
+ 		<result column="student_Email" property="studentEmail"/>
+ 		<result column="student_addr" property="studentAddr"/>
+ 		<result column="reg_date" property="regDate"/>
+ 	</resultMap>
+ 
+ 
+ 	<select id="searchStudent" parameterType="string" resultMap="studentMap">
+ 		SELECT * 
+ 		FROM STUDENT
+ 		WHERE STUDENT_EMAIL LIKE '%'||#{email}||'%'
+ 	</select>
+ 	
+ 	
+ 	<select id="selectStudentMap" parameterType='_int' resultType="map">
+ 		
+ 		SELECT * FROM STUDENT WHERE STUDENT_NO=#{no}
+ 		 		
+ 	</select>
+ 
+ 	<select id="selectStudentListMap" resultType="map">
+ 		SELECT student_no,student_name,student_email FROM STUDENT
+ 	</select>
+ 
+ 
+ 
+ 
+</mapper>
