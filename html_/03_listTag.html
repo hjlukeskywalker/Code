@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목록태그 활용하기</title>
+</head>
+<body>
+    <h1>순서없는 목록태그 : ul</h1>
+    <p>ul태그는 내부에 li태그로 목록을 표시함.</p>
+    <ul>
+        <li>육개장</li>
+        <li>냉면</li>
+        <li>순두부찌개</li>
+        <li>라면</li>
+    </ul>
+    <p>ul태그에 다시 ul태그 넣기</p>
+    <ul id="menu1" class="menu">
+        <li>육개장</li>
+        <li>냉면</li>
+        <li>순두부찌개</li>
+        <li>라면
+            <ul>
+                <li>신라면</li>
+                <li>진라면</li>
+                <li>불닭볶음면</li>
+            </ul>
+        </li>
+    </ul>
+    <p>ul태그는 주로 페이지에서 메뉴 만들때 사용</p>
+
+    <h1>순서가 있는 목록 : ol태그 </h1>
+    <ol>
+        <li>자바</li>
+        <li>오라클</li>
+        <li>jdbc</li>
+        <li>html</li>
+    </ol>
+    <p>
+        ol태그는 순서가 부여되 앞에 순서를 표현하는 문자가 출력됨.
+        default값 : 숫자로 표현.
+        변경하고 싶으면 속성값을 설정해서 영문자(대/소), 로마자(대/소)변경할 수 있음
+        type="A||a"(영문자)/"i||I"(로마자)        
+    </p>
+    <ol type="A">
+        <li>자바</li>
+        <li>오라클</li>
+        <li>jdbc</li>
+        <li>html</li>
+    </ol>
+    <ol type="a">
+        <li>자바</li>
+        <li>오라클</li>
+        <li>jdbc</li>
+        <li>html</li>
+    </ol>
+    <ol type="I">
+        <li><h1>자바</h1></li>
+        <li><h2>오라클</h2></li>
+        <li>jdbc</li>
+        <li>html</li>
+    </ol>
+    <p>출력되는 순서를 변경하고 싶다면 start속성을 이용하여 변경</p>            
+    <ol type="1" start="5">
+        <li>자바</li>
+        <li>오라클</li>
+        <li>jdbc</li>
+        <li>html</li>
+    </ol>
+    <ol type="a" start="5">
+        <li>자바</li>
+        <li>오라클</li>
+        <li>jdbc</li>
+        <li>html</li>
+    </ol> 
+    <p>역순으로 출력하려면 reversed 속성</p>   
+    <ol type="1" reversed start="5">
+        <li>자바</li>
+        <li>오라클</li>
+        <li>jdbc</li>
+        <li>html</li>
+    </ol>
+
+    <h1>메뉴만들기</h1>
+    <nav>
+        <ul>
+            <li>main</li>
+            <li>board</li>
+            <li>gallary</li>
+            <li>warehouse</li>
+        </ul>
+    </nav>
+    <style>
+        nav>ul>li{
+            display:inline;
+            font-size:40px;
+            color:lightgreen;
+            font-weight:bold;
+            margin-right:10px;
+        }
+        nav>ul>li:hover{
+            color:lime;
+        }
+    </style>
+
+    <h2>정의 리스트 태그 활용하기</h2>    
+    <p>
+        dl태그를 이용 dl태그의 자식으로 dt, dd태그가 있음.
+        dt : 제목을 작성부분
+        dd : 제목에 따른 뜻을 나타내는부분
+    </p>
+    <dl>
+        <dt><h2><b>apple</b></h2></dt>
+        <dd>명, 사과</dd>
+    </dl>
+
+</body>
+</html>

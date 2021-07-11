@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영역을 분할하는 태그 알아보기</title>
+    <style>
+        div{
+            width:500px;
+            height:300px;
+            border:1px red solid;
+            /* float:left; */
+        }
+        #info{
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>수직으로 영역을 분할하는 div태그</h1>
+    <p>
+        div는 페이지의 한 라인전체를 차지하는 태그
+        별도의 설정이 없으면 그 라인에 다른 태그가 오지 못함
+        block속성의 태그임.
+        넓이와 높이을 설정할 수 있음.
+    </p>
+    <div id="logo">div</div>
+    <div id="info">
+        <h1>이 사이트는 html을 공부하기 위한 사이트임</h1>
+        <p>기초적인 태그에 대해 알아보는 사이트입니다.</p>
+        <ul>
+            <li>문자태그</li>
+            <li>목록태그</li>
+            <li>테이블 태그</li>
+        </ul>
+    </div>
+
+    <h2>라인에서 일부분의 영역을 지정하는 태그</h2>
+    <p>
+        span태그를 이용 -> 라인안에서 일부만 적용
+        라인에 속해 있기 때문에 높이와 넓이를 마음대로 수정할 수 없다.
+    </p>
+    <div id="container">
+        <h1>여러분 이제 곧 <span class="target">점심시간</span>이네요 하하하하하</h1>
+    </div>
+    <style>
+        span{
+            width:500px;
+            height:500px;
+            border:1px blue solid;
+        }
+        .target{
+            color:red;
+            font-size:50px;
+        }
+    </style>
+
+
+
+    <h1>iframe태그에 대해 알아보자</h1>
+    <p>
+        외부, 내부의 다른 html파일(페이지)를 불러와 출력하는 태그
+        scr속성에는 내부파일, 외부링크도 가능
+    </p>
+    <iframe width="400" heigth="400" src="04_tableTag.html"></iframe>
+    <iframe width="600" height="600" src="http://www.iei.or.kr"></iframe>
+    <br>
+    <!-- <iframe width="1000" height="1000" src="https://www.naver.com"></iframe> -->
+
+    <h1>유투브 동영상 가져오기.</h1>
+    <iframe width="1090" height="613" src="https://www.youtube.com/embed/QZbcN7iVxLg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+    encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    
+
+
+
+</body>
+</html>

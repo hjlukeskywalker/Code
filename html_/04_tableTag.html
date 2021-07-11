@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블태그 알아보기</title>
+</head>
+<body>
+    <h1>테이블태그 활용하기</h1>
+    <table border="1">
+        <tr><!--행-->
+            <td>1행1열</td><!--열-->
+            <td>1행2열</td>
+        </tr>
+        <tr>
+            <td>2행1열</td>
+            <td>2행2열</td>
+        </tr>
+    </table>
+    <br>
+    <!-- 3행 3열 만들기 -->
+    <table border="1" width="300" height="400">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <!-- db에서 가져온 데이터를 출력할때 많이 사용 -->
+    <!-- 회원테이블에서 이름, 나이 성별을 가져옴. -->
+    <h2>회원정보</h2>
+    <table border="1" width="300" height="300">
+        <tr>
+            <!-- <td>이름</td>
+            <td>나이</td>
+            <td>성별</td> -->
+            <th>이름</th>
+            <th>나이</th>
+            <th>성별</th>
+        </tr>
+        <tr>
+            <td align="center"><b>유병승</b></td>
+            <td align="right">19</td>
+            <td>남</td>
+        </tr>
+        <tr>
+            <td valign="bottom">김상현</td>
+            <td valign="top">29</td>
+            <td align="center" valign="bottom">여</td>
+        </tr>
+        <tr>
+            <td>김예진</td>
+            <td>26</td>
+            <td>여</td>
+        </tr>
+        <caption>&lt;21년회원정보&gt;</caption>
+    </table>
+    <h3>caption태그를 이용하지 않고 설명 추가하기</h3>
+    <p>figure태그 이용하기 </p>
+    <figure>
+        <table border="1" width="300" height="300">
+            <tr>
+                <!-- <td>이름</td>
+                <td>나이</td>
+                <td>성별</td> -->
+                <th>이름</th>
+                <th>나이</th>
+                <th>성별</th>
+            </tr>
+            <tr>
+                <td align="center"><b>유병승</b></td>
+                <td align="right">19</td>
+                <td>남</td>
+            </tr>
+            <tr>
+                <td valign="bottom">김상현</td>
+                <td valign="top">29</td>
+                <td align="center" valign="bottom">여</td>
+            </tr>
+            <tr>
+                <td>김예진</td>
+                <td>26</td>
+                <td>여</td>
+            </tr>
+        </table>
+        <figcaption>&lt;21년회원정보&gt;</figcaption>
+    </figure>
+    <h2>테이블 병합하기</h2>
+    <table border="1" width="300" height="300">
+        <tr>
+            <td rowspan="3">1열1행</td>
+            <td>2열1행</td>
+            <td>3열1행</td>
+        </tr>
+        <tr>
+            
+            <td>2열2행</td>
+            <td rowspan="2">3열2행</td>
+        </tr>
+        <tr>
+            <td>2열3행</td>
+        </tr>
+    </table>
+
+    <h2>열합치기</h2>
+    <table border="1" width="300" height="300">
+        <tr>
+            <td>1</td>
+            <td colspan="2">2</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td colspan="3">7</td>
+        </tr>
+    </table>
+
+    <h2>colspan, rowspan동시 적용하기</h2>
+    <table border="1" width="300" height="300">
+        <tr>
+            <td colspan="2" rowspan="2">1</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+    </table>
+
+    <!-- 5*5테이블을 만들어서 그림과 같은 표를 만들어보자 -->
+    <table border="1" width="300" height="300">
+        <tr>
+            <td rowspan="2" colspan="4"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="5">7</td>
+
+        </tr>
+        <tr>
+            <td colspan="5">7</td>
+        </tr>
+        <tr>
+            <td colspan="5">7</td>
+        </tr>
+    </table>
+
+    <h2>테이블의 영역설정하기</h2>
+    <p>테이블을 row를 기준으로 영역을 설정하는 태그</p>
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>성별</th>
+                <th>성적</th>
+            </tr>
+            <tr>
+                <td>유병승</td>
+                <td>19</td>
+                <td>남</td>
+                <td>40</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>김상현</td>
+                <td>29</td>
+                <td>남</td>
+                <td>90</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>총계</td>
+                <td colspan="3">130</td>
+            </tr>
+        </tfoot>    
+    </table>
+    <style>
+        thead{
+            background-color:gray;
+        }
+        thead+tbody{
+            background-color:springgreen;
+        }
+        tfoot{
+            background-color:aqua;
+        }
+    </style>
+
+    <h2>컬럼을 기준으로 영역을 설정하기</h2>
+    <table border="1" width="300" heigth="300">
+        <colgroup>
+            <col style="background-color:magenta">
+            <!-- <col style="background-color:lime"> -->
+            <col>
+            <col style="background-color:purple">
+        </colgroup>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+
+    table[border="1" width="300" height="300"]>(tr>td*3)*3
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form태그에 대해 알아보자</title>
+</head>
+<body>
+    <h1>form태그에 대해 알아보자</h1>
+    <p>
+        form태그는 서버에 데이터를 전송해주는 기능을 하는 태그
+        주요속성 : method, action
+        method : data를 전송할 방식에 대해 결정 -> get, post
+        action : 요청할 주소 작성
+    </p>
+    <h2>post/get방식으로 데이터 전송하기</h2>
+    <h4>get방식으로 보내기</h4>
+    <form method="get" action="06_imageTag.html">
+        <input type="text" name="id"/>
+        <input type="password" name="pw"/>
+        <input type="submit" value="로그인"/>
+    </form>
+    <h4>post방식으로 보내기</h4>
+    <form method="post" action="08_hyperlinkTag.html">
+        아이디 <input type="text" name="id"/><br>
+        패스워드<input type="password" name="pw"/><br>
+        <input type="submit" value="로그인"/>
+    </form>
+    <p>
+        form태그의 method속성은 반드시 필요한 속성으로 default값을 가지고 있음.
+        default : get
+    </p>
+    <form action="07_mutimediaTag.html">
+        <input type="text" name="test">
+        <input type="submit" value="전송">
+    </form>
+
+    <h2>fieldset태그와 legend태그 알아보기</h2>
+    <fieldset>
+        <legend>검색창</legend>
+        <form action="">
+            <input type="text" name="test">
+            <input type="submit" value="전송">
+            <p>검색어를 입력</p>
+        </form>
+    </fieldset>
+
+    <h1>input태그에 대해 알아보자</h1>
+    <p>
+        input태그는 사용자가 입력할 수 있는 화면을 출력하는 태그
+        입력화면은 type 속성에 따라 결정됨.
+        input태그는 반드시 form태그에 있어야 하는 것은 아님
+    </p>
+    <h3>type : text, password</h3>
+    <p> text, password타입은 한줄문자를 입력받는 화면</p>
+    <input type="text" id="str" name="str"><br>
+    <input type="text" name="str" placeholder="검색어를 입력하세요"><br>
+    <input type="text" name="str" value="오늘 아침 추워요" readonly><br>
+    <input type="text" name="str" size="3" maxlength="3">
+    <form action="">
+        <input type="text" size="8" minlength="3">
+        <input type="text" nams="keyword" required>
+        <input type="submit" value="제출">
+    </form>
+    <br>
+    passwordtype <input type="password" name="pw">
+
+    <h3>type : hidden</h3>
+    <p>
+        사용자에게 보여줄 데이터는 아니지만 서비스를 실행할때 반드시 
+        보내야 하는 값을 설정할때
+        value속성에 값을 반드시 입력.
+    </p>
+    <form action="">
+        제목 <input type="text" name="title" value="이거수정해봐(냉무)">
+        내용 <input type="text" name="content" >
+        <input type="hidden" name="boardNo" value="1">
+        <input type="submit" value="수정">
+    </form>
+
+    <h2>type : button</h2>
+    <p>
+        버튼모양출력을 해줌 -> 반드시 기능추가(이벤트처리) 자바스크립트와 연결해서 사용
+    </p>
+    아이디 <input type="text" name="id">
+    <input type="button" value="아이디중복확인" onclick="test();">
+    <script>
+        function test(){
+            alert("왜눌러!!");
+            open("","_blank","width=300,height=300");
+        }
+    </script>
+
+    <h2>type checkbox, radio</h2>
+    <p>
+        선택사항을 두고 체크, 선택할 수 있는 화면을 출력
+        name/value값을 반드시 지정해줘야함.
+        동일한 선택조건 있는 것은 name을 동일하게 해준다. -> 데이터가 배열형식으로 넘어감
+        checkbox : 다중선택을 하는 로직
+        radio : 예시중 한가지만 선택 다중선택불가능한 것
+    </p>
+
+    <fieldset>
+        <legend>취미</legend>
+        <form action="">
+            <label><input type="checkbox" name="hobby" value="운동">운동</label>
+            <input type="checkbox" id="code" name="hobby" value="코딩" 
+            checked disabled>
+            <label for="code">코딩</label>
+            <input type="checkbox" name="hobby" value="독서">독서
+            <input type="checkbox" name="hobby" value="여행">여행
+            <p>성별</p>
+            <label><input type="radio" name="gender" value='M'>남자</label>
+            <label><input type="radio" name="gender" value="F" checked>여자</label>
+            <input type="submit" value="전송">
+        </form>
+    </fieldset>
+
+    <h2>type file</h2>
+    <p>
+        파일을 서버에 업로할때 -> local에 있는 파일을 가져올때
+        바이너리파일이 전송되기때문에 form으로 전송할때는
+        encoding값을 변경해줘야함. enctype속성을 이용!
+        method는 반드시 post로 전송해야함.
+    </p>
+    <form action="" method="post" enctype="multipart/form-data">
+        <input type="file" name="upload" accept="video/*"multiple>
+    </form>
+
+    <h2>type image</h2>
+    <p>
+        사진을 submit으로 이용하는 타입
+    </p>
+    <form action="">
+        <input type="text" name="title">
+        <input type="image" src="images/yoo.jpg" name="test" value="test"
+        width="100" height="100">
+    </form>
+
+    <h2>type submit, reset</h2>
+    <p>
+        submit : form태그의 자식인 input태그의 값을 전송하는 태그
+        reset : form태그의 자식 input태그 값을 초기화
+        submi/reset 버튼으로 출력 버튼에 출력되는 내용은 value속성으로 설정
+    </p>
+    <form action="">
+        아이디 <input type="text" name="userId"><br>
+        패스워드 <input type="password" name="password"><br>
+        취미<br>
+        <input type="checkbox" name="hobby" value="운동">운동
+        <input type="checkbox" name="hobby" value="독서">독서
+        <input type="checkbox" name="hobby" value="코딩">코딩
+        <input type="checkbox" name="hobby" value="잠">잠자기<br>
+        <!-- <input type="submit" value="회원가입"> -->
+        <button type="button" onclick="test();">회원가입</button>
+        <input type="reset" value="취소">
+    </form>
+
+    <h2>html5에서 지원하는 type</h2>
+    <h2>type : color</h2>
+    <p>
+        색상선택하는 type
+    </p>
+    <form action="">
+        <input type="color" name="background" value="#ffff00">
+        <input type="submit" value="전송">
+    </form>
+
+    <h2>type date, datetime, datetime-local, month, week, time</h2>
+    <p>
+        날짜를 입력받은 타입
+    </p>
+    <form action="">
+        <input type="date" name="birthday" min="2021-03-01" max="2021-03-31">
+        <input type="datetime">
+        <input type="datetime-local" name="time"><br>
+        <input type="month">
+        <input type="week">
+        <input type="time">
+        <input type="submit" value="전송">
+    </form>
+
+    <h2>type number</h2>
+    <p>숫자입력 전용</p>
+    <form action="">
+        <input type="number"><br>
+        <input type="number" max="100" min="0"  name="su"><br>
+        <input type="submit">
+    </form>
+
+    <h2>type : search, range, url, email</h2>
+    <p>
+        search : 검색어입력창 text타입과 유사하나 x버튼이 있음
+        range : 일정범위에 있는 값을 표시 max, min, step속성을 설정
+        url : 사이트의 주소받는 입력창 text타입과 유사, 입력값에 http:// 있는지 체크해줌
+        email : 이메일 입력창, @가 있는지(형식에 맞는지)
+    </p>
+    <form action="">
+        <input type="search" name="keyword"><br>
+        <input type="range" name="ra" min="1" max="3" step="1"><br>
+        <input type="url" name="url"><br>
+        <input type="email" name="email"><br>
+        <input type="submit" value="전송">
+    </form>
+
+    <h2>기타입력 창 태그</h2>
+    <p>
+        select : combobox형식으로 선택해하는것 예) 검색 category
+                자식태그로 option태그를 가지고 있음
+        datalist : input태그 text타입의 자동완성기능을 할 수 있게 하는 태그
+                자식태그로 option태그를 가지고 있음
+        textarea : 여러문장을 입력받게 하는 태그 긴글, 소개글, 게시판내용
+                특정크기를 속성으로 정해줘야함. cols, rows
+    </p>
+    
+ 
+    <form action="">
+        <select name="category" multiple>
+        <optgroup label="대도시">
+            <option value="서울1">서울</option>
+            <option value="대전1">대전</option>
+            <option value="부산1">부산</option>
+        </optgroup>
+        <optgroup label="시도">    
+            <option value="경기도1">경기도</option>
+            <option value="강원도1">강원도</option>
+            <option value="전라도1">전라도</option>
+        </optgroup>    
+        </select>
+        <br>
+        <input type="text" name="sample" list="data">
+        <datalist id="data">
+            <option value="유병승">유병승</option>
+            <option value="김상현">김상현</option>
+            <option value="김예진">김예진</option>
+            <option value="제인혁">제인혁</option>
+            <option value="김지한">김지한</option>
+        </datalist>
+        <br>
+        <textarea name ="info" cols="30" rows="5" style="resize:none;">안녕하세요</textarea>
+        <input type="submit" value="제출">
+    </form>
+
+    <progress id="p" value="0" max="100"></progress>
+    <script>
+        setInterval(()=>{
+            let pro=document.getElementById("p");
+            pro.value+=(Number)(Math.random()*50);
+        },500);
+    </script>
+
+
+
+
+
+    
+
+
+
+
+
+</body>
+</html>
