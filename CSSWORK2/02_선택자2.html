@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 활용2</title>
+</head>
+<body>
+    <h2>반응선택자 : 선택자:active, 선택자:hover</h2>
+    <p>
+        마우스의 이벤트에 의해 style적용되는 선택자
+        active : 마우스를 클릭했을때 style적용
+        hover : 마우스가 태그영역에 들어갔을때 style적용
+    </p>
+    <nav>
+        <p id="activeTest">클릭하면 변해라~~</p>
+        <p class="hoverTest">마우스가 오면 변해라~</p>
+    </nav>
+    <style>
+        #activeTest:active{
+            font-size:30px;
+            color:palegreen;
+            background-color:tan;
+        }
+        .hoverTest:hover{
+            color:tomato;
+            background-color: violet;
+        }
+    </style>
+    <nav>
+        <ul>
+            <li>메인메뉴</li>
+            <li>게시판</li>
+            <nav>
+                <ul>
+                    <li>자유게시판</li>
+                    <li>모임게시판</li>
+                </ul>
+            </nav>
+        </ul>
+    </nav>
+    <style>
+        li+nav>ul{
+            height:0px;
+            overflow:hidden;
+        }
+        li:hover+nav>ul,nav>ul:hover{
+            height:100px;
+        }
+        nav>ul>li{
+            display: inline-block;
+            margin-right:20px;
+            font-size:30px;
+            color:white;
+            font-weight:bold;
+        }
+        nav>ul{
+            background-color: lightgreen;
+        }
+    </style>
+
+    <h3>문자선택자</h3>
+    <p>
+        ::first-letter : 첫번째 글자만 style적용하기
+        ::first-line : 첫번째 라인(줄) style적용하기
+        ::after : 태그의 끝문자에 문자추가
+        ::before : 태그의 시작에 문자추가
+        ::selection : 마우스 드래그로 선택했을때 디자인 적용
+    </p>
+    <div>
+        <p>
+            나의 이름은 유병승입니다. 사는곳은 경기도 시흥시<br>
+            나의 나이는 19살이구 취미는 코딩입니다.
+        </p>
+        <p>
+            김상현은 남자, R클래스 반장, 태희 괴롭힘.
+        </p>
+    </div>
+    <style>
+        div>p::first-letter{
+            font-size:30px;
+            color:lime;
+        }
+        div>p::first-line{
+            background-color:goldenrod;
+        }
+        div>p::after{
+            content:"-bs-";
+        }
+        div>p::before{
+            content:"시작";
+            color:greenyellow;
+            background-color:red;
+        }
+        div>p::selection{
+            background-color:khaki;
+            color:red;
+        }
+    </style>
+
+    <h3>구조선택자</h3>
+    <p>
+        선택자:first-child : 구조상 첫번째 자식인 선택자 태그
+        선택자:last-child : 구조상 마지막 자식인 선택자 태그
+        선택자:nth-child : 구조상 n번째 자식인 선택자
+    </p>
+    <div>
+        <p>이제 내가 첫번째</p>
+        <h5>h5 1번째</h5>
+        <h5>h5 2번째</h5>
+        <h5>h5 3번째</h5>
+        <h5>h5 4번째</h5>
+        <p>p태그</p>
+        <div>
+            <h5>div내부 h5 1번째</h5>
+            <h5>div내부 h5 2번째</h5>
+            <h5>div내부 h5 3번째</h5>
+            <h5>div내부 h5 4번째</h5>
+        </div>
+        <h5>이게 마지막</h5>
+    </div>
+    <style>
+        h5:first-child{
+            background-color: magenta;
+        }
+        h5:last-child{
+            background-color:maroon;
+        }
+        h5:nth-child(2n){
+            background-color: lightgoldenrodyellow;
+        }
+        /* 
+            first-of-type
+            last-of-type
+            nth-of-type
+        */
+        h5:first-of-type{
+            background-color:darkmagenta;
+        }
+        h5:last-of-type{
+            background-color:red;
+        }
+
+    </style>
+
+    <h4>부정선택자</h4>
+    <p>
+        선택자:not(선택자)
+    </p>
+    <div id="notTest">
+        <p>1</p>
+        <div>div1</div>
+        <p>2</p>
+        <p>3</p>
+        <div>div2</div>
+        <p>4</p>
+        <div>div3</div>
+        <p>5</p>
+    </div>
+    <style>
+        div#notTest>p:not(:nth-child(2n-1)){
+            background-color:crimson;
+        }
+        div#notTest *:not(p){
+            background-color:coral; 
+        }
+    </style>
+
+    <h2>선택자 사용하기</h2>
+    <p>
+        여러선택자를 혼합해서 사용함.
+        한개의 스타일에 여러선택자를 적용시킬 수 있음.
+    </p>
+
+    <div>
+        <input type="text" name="userId">
+        <p>test</p>
+    </div>
+
+    <style>
+        input[type="text"],div>p{
+            font-size:30px;
+            border:5px blue solid;
+        }
+    </style>
+</body>
+</html>

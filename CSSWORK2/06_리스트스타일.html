@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리스트스타일적용하기</title>
+</head>
+<body>
+    <h3>목록스타일적용하기</h3>
+    <p>
+        list-style-type : 앞의 숫자, 모형을 수정할 수 있는 속성
+        ul : disc, circle, square, none;
+        ol : decimal, decimal-lead-zero, lower-roman/upper-roman, lower-alpha/upper-alpha
+    </p>
+    <ul class="ulstyle">
+        <li>html</li>
+        <li>css</li>
+        <li>javascript</li>
+        <li>jquery</li>
+    </ul>
+    <ol class="olstyle">
+        <li>html</li>
+        <li>css</li>
+        <li>javascript</li>
+        <li>jquery</li>
+    </ol>
+    <style>
+        .ulstyle{
+            /* list-style-type:disc; */
+            /* list-style-type:circle; */
+            /* list-style-type:square; */
+            list-style-type:none;
+        }
+        .olstyle{
+            list-style-type:decimal-leading-zero;
+        }
+    </style>
+
+    <h3>목록에 이미지넣기</h3>
+    <p>
+        list-style-image : url(이미지 주소)
+        이미지의 크기가 적당해야함.
+    </p>
+    <ul class="imgli">
+        <li>미키마우스</li>
+        <li>미니마우스</li>
+        <li>구피</li>
+        <li>도널드덕</li>
+        <li>데이지</li>
+        <li>곰돌이푸</li>
+    </ul>
+    <style>
+        .imgli{
+            list-style-image:url("duck.jpg");
+            font-size:40px;
+            list-style-position: inside;
+        }
+    </style>
+
+</body>
+</html>

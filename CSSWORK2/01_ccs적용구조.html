@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css적용방법</title>
+    <!-- 
+        style태그 이용해서 css적용하기 
+        style태그는 사용하는 위치는 어디든 상관없음. 
+        head태그, body태그 내부 다됨.
+        다수의 style태그가 있어도 상관없음 * 추천하지 않음
+    -->
+    <style>
+        h1{
+            color:violet;
+            background-color:ivory;
+        }
+    </style>
+    <!-- 외부css파일 불러와서 style적용하기 -->
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css"/>
+</head>
+<body>
+    <h1>style태그로 디자인하기</h1>
+    <style>
+        h2{
+            color:skyblue;
+            background-color: slateblue;
+        }
+    </style>
+    <h2>이건 다른곳에서 선언한 스타일태그로 적용</h2>
+    <p>여러분 요즘 일교차가 심한대.. 감기 조심하세요~</p>
+    <!-- 태그의 style속성에 직접 적용하는것 -->
+    <h3 style="color:purple;background-color:springgreen;">
+        이건 직접(인라인)으로 적용한 스타일</h3>
+    
+   
+</body>
+
+</html>

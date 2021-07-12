@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자활용하기</title>
+</head>
+<body>
+    <h1>선택자</h1>
+    <p>
+        선택자는 페이지에 있는 원하는 태그(element)를 선택하는 것
+        자주 : 아이디선택자, 클래스선택자, 태그선택자, 자손, 후손선택자, 반응선택자
+        전체, 구조, 속성, 동위선택자가 있음.
+    </p>
+    <h3>전체선택자 : * </h3>
+    <table>
+        <tr>
+            <td>변경하자</td>
+            <td>변경하자2</td>
+            <td>변경하자3</td>
+        </tr>
+    </table>
+    <style>
+        *{
+            font-size:30px;
+            background-color:black;
+            color:white;
+        }
+    </style>
+
+    <h3>태그선택자</h3>
+    <p>태그명으로 태그(element)를 선택하는 것</p>
+    <table>
+        <tr>
+            <td>이름</td>
+            <td>나이</td>
+            <td>성별</td>
+        </tr>
+        <tr>
+            <td>유병승</td>
+            <td>19</td>
+            <td>남</td>
+        </tr>
+        <tr>
+            <td>김상현</td>
+            <td>29</td>
+            <td>여</td>
+        </tr>
+    </table>
+    <style>
+        table{
+            height:200px;
+            width:300px;
+            border:1px orange solid;
+        }
+        td{
+            border:1px orangered solid;
+            background-color:aquamarine;
+        }
+    </style>
+
+    <h3>아이디 선택자 : #아이디명 </h3>
+    <p>
+        id속성이 설정되어있는 태그를 선택하는 것
+        아이디명이 일치하는 태그(element)만 선택해서 style적용
+        * 아이디명은 중복되면 안됨. 유일한 한개의 태그! -> javascript에서 불러올때 에러발생
+    </p>
+    <p id="idselect">아이디 선택자로 style변경하자</p>
+    <p id="idselect">이것도 선택되니?</p>
+    <style>
+        #idselect{
+            font-size:20px;
+            color:red;
+            background-color:yellow;
+        }
+    </style>
+
+    <h3>클래스선택자 : .클래스명</h3>
+    <p>
+        클래스속성명이 일치하는 태그에 style을 적용하는 것
+        중복값을 허용함. 다수의 태그에 설정해서 style을 한번에 적용할 수 있음
+        * style 라이브러에서 많이 사용함.
+    </p>
+    <div>
+        <p>div안의 p태그</p>
+        <h4 class="classselect font">div안의 h4태그</h4>
+        <ul>
+            <li class="classselect">li태그1</li>
+            <li>li태그2</li>
+        </ul>
+        <ul>
+            <li class="font">li태그3</li>
+            <li><a href="" class="classselect">li안에 a태그</a></li>
+        </ul>
+    </div>
+    <style>
+        .font{
+            font-size:20px;
+            font-weight:bold;
+            font-family: "궁서";
+        }
+        .classselect{
+            background-color:yellowgreen;
+        }
+    </style>
+
+    <h3>속성선택자 : 선택자[속성명 비교연산 속성값]</h3>
+    <p>
+        태그에 설정되어있는 속성과 속성값을 기준으로 선택하는 선택자
+        input, img, a 등의 속성을 기준으로 디자인을 적용할때
+        비교 연산
+        속성명 = 속성값 : 일치한것
+        ~= : 띄어쓰기를 기준으로 값을 확인
+        |= : -를 기준으로 값을 확인
+        ^= : 맨앞글자를 기준으로 확인
+        $= : 맨뒤글자를 기준으로 확인
+        *= : 포함여부확인
+    </p>
+    <input type="text" name="userid">
+    <input type="password" name="pwd">
+    <style>
+        [name="userid"]{
+            background-color:cyan;
+        }
+        input[type="password"]{
+            background-color:red;
+            color:wheat;
+        }
+    </style>
+    <br>
+    <a href="www naver.com">^=</a>
+    <a href="ww-naver.com">^=</a>
+    <a href="_wwwnaver.com">^=</a>
+    <br>
+    <a href="naver com">~=</a>
+    <a href="naver net">~=</a>
+    <a href="co kr naver">~=</a>
+    <br>
+    <a href="www naver-net">naver-net</a>
+    <a href="naver net">naver net</a>
+    <a href="naver~net">naver~net</a>
+    <a href="www-naver-net">www-naver-net</a>
+    <br>
+    <a href="www.naver.com">www.naver.com</a>
+    <a href="www.google.com">www.google.com</a>
+    <a href="www.comnate">www.nate.com</a>
+    <br>
+    <img src="https://pds.joins.com/news/component/htmlphoto_mmdata/201912/14/07712b9e-e451-49c7-a65c-fb94b6dcda0b.jpg" 
+    width="200" height="200" alt="마동석">
+    <p width="200">이것도 적용되니?</p>
+    <style>
+        [width="200"]{
+            border-radius:90px;
+            border:1px yellow solid;
+        }
+        /* *=연산자 이용하기 */
+        a[href*="com"]{
+            background-color:lightcyan;
+        }
+        /* |=연산자 이용하기 */
+        a[href|="naver"]{
+            background-color:lightsalmon;
+        }
+        /* ^=연산자 이용하기 */
+        a[href^="www"]{
+            text-decoration:none;
+        }
+        /* ~=연산자 이용하기 */
+        a[href~="naver"]{
+            color:lime;
+        }
+    </style>
+
+    <h3>자식/후손선택자 : 부모선택자>자식선택자 / 부모선택자 자식선택자</h3>
+    <p>
+        자식선택자 : 부모하고 직접연결 되어있는 태그
+        후손선택자 : 부모선택자가 포함하고 있는 모든 태그
+    </p>
+    <header>
+        <h3>자식선택자 h3</h3>
+        <ul>
+            <li>후손태그 li1</li>
+            <li id="childselect">후손태그 li2</li>
+            <li>후손태그 li3</li>
+        </ul>
+        <p>자식태그 p</p>
+        <div>
+            <h3>후손태그 h3</h3>
+            <ul>
+                <li>div안에 ul안에 li1</li>
+                <li>div안에 ul안에 li2</li>
+                <li>div안에 ul안에 li3</li>
+            </ul>
+        </div>
+    </header>
+    <div>
+        <h3>div의 자식선택자</h3>
+    </div>
+    <style>
+        header>div>h3{
+            background-color:magenta;
+        }
+        header>ul>#childselect{
+            color:lightpink;
+            font-size:50px;
+        }
+        /* 후손선택자 */
+        header li{
+            background-color: darkorange;
+            color:deeppink;
+        }
+    </style>
+
+    <h3>동등선택자 : 전선택자+후선택자, 선택자~선택자 </h3>
+    <p>
+        같의 위치(level)에 있는 태그를 선택하는 것
+        + : 같은위치 태그 중 전선택자 다음에 오는 한개 후선택자 태그
+        ~ : 같은위치 태그 중 전선택자 다음에 오는 모든 후선택자 태그
+    </p>
+    <style>
+        h3+p{
+            background-color:royalblue;
+            color:lightgreen;
+        }
+        p+p{
+            text-decoration: underline;
+            color:hotpink;
+        }
+        p~h3+div{
+            color:khaki;
+            background-color: lavender;
+        }
+    </style>
+    <section>
+        <p>1 p</p>
+        <p>2 p</p>
+        <div>3div</div>
+        <div>
+            <p>4p</p>
+            <h3>h3</h3>
+            <div>adsfa</div>
+            <h3>h3</h3>
+        </div>
+        <p>5p</p>
+        <h3>h3</h3>
+        <div>sadfsdf</div>
+        <h3>h3</h3>
+    </section>
+
+</body>
+</html>

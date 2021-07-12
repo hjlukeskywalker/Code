@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트스타일</title>
+</head>
+<body>
+    <h3>글자색변경하기 : color</h3>
+    <div id="color">
+        <p class="colorchange">안녕하세요</p>
+    </div>
+    <h3>text-decoration속성</h3>
+    <p>문장에 밑줄, 윗줄, 삭선, 표시취소</p>
+    <h3 class="underline">이건 밑줄표시</h3>
+    <h3 class="uperline colorchange">이건 윗줄표시</h3>
+    <h3 class="deleteline">이건 삭선표시</h3>
+    <a href="" class="none colorchange">연결하는 하이퍼링크<span class="underline">태그</span></a>
+
+    <h3>text-transform</h3>
+    <p>영문자를 대/소문자변경, 첫글자 대문자변경</p>
+    <h2 class="capitalize">hello world</h2>
+
+    <h3>text-shdow</h3>
+    <p>
+        문자에 그림자표시하는속성
+        text-shadow : 가로, 세로, 번짐 색상
+    </p>
+    <h2 class="basicShadow">오늘은 불금 그래서 빨간그림자</h2>
+
+
+    <h3>white-space</h3>
+    <p>공백에 대한 설정을 하는 속성(띄어쓰기, 개행)</p>
+    <div id="container" class="pre">
+        동해물과                  백두산이 마르고 닿도록 하느님이 보우하사 우리나라만세
+        무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세.
+    </div>
+    <div id="container" class="nowrap">
+        동해물과                  백두산이 마르고 닿도록 하느님이 보우하사 우리나라만세
+        무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세.
+    </div>
+    <div id="container" class="preline">
+        동해물과                  백두산이 마르고 닿도록 하느님이 보우하사 우리나라만세
+        무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세.
+    </div>
+    <div id="container" class="prewrap">
+        동해물과                  백두산이 마르고 닿도록 하느님이 보우하사 우리나라만세
+        무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세.
+    </div>
+
+    <h3>텍스트 간격조절하기 : letter-spacing, word-spacing</h3>
+    <p>
+        letter-spacing : 문자간의 간격를 조정(자간)
+        word-spacing : 단어간의 간격 -> 띄어쓰기 간격 ex)나는 유병승이다.
+    </p>
+    <p>오늘은 금요일 아이유만나는날 금요일에 시간어때요?</p>
+    <p class="letterspacing">오늘은 금요일 아이유만나는날 금요일에 시간어때요?</p>
+    <p class="wordspacing">오늘은 금요일 아이유만나는날 금요일에 시간어때요?</p>
+    <style>
+        .letterspacing{
+            letter-spacing : 10px;
+        }
+        .wordspacing{
+            word-spacing : 10px;
+        }
+        .prewrap{
+            white-space: pre-wrap;
+        }
+        .preline{
+            white-space: pre-line;
+        }
+        .nowrap{
+            /* 공백은 하나표시하고 한줄로 표시함 */
+            white-space:nowrap;
+        }
+        .pre{
+            /* 여러개 공백을 모두표시 -> pre태그와 동일*/
+            white-space:pre;
+        }
+        #container{
+            width:300px;
+            height:200px;
+            border:1px solid red;
+        }
+        .basicShadow{
+            text-shadow:1px 1px 8px red,-1px -1px 8px gold;
+        }
+        .uppercase{
+            text-transform:uppercase;
+        }
+        .lowercase{
+            text-transform:lowercase;
+        }
+        .capitalize{
+            text-transform:capitalize;
+        }
+        a:hover{
+            text-decoration:underline;
+            font-size:30px;
+        }
+        .underline{
+            text-decoration:underline;
+        }
+        .uperline{
+            text-decoration:overline;
+        }
+        .none{
+            text-decoration:none;
+        }
+        .deleteline{
+            text-decoration:line-through;
+        }
+        .colorchange{
+            /* color:gold; */
+            /* color:rgb(255,0,221); */
+            color:#ec5d0a;
+        }
+
+    </style>
+
+
+
+
+</body>
+</html>

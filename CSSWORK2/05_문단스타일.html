@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문단스타일</title>
+</head>
+<body>
+    <h2>문단정렬하기</h2>
+    <p>
+        text-align : left||right||center||justify
+    </p>
+    <div class="container">
+        찬바람에 부는 옷깃 사랑에 빠진 달빛
+        눈꽃이 흩날리는 별에는 온통 잿빛
+        물감에 물이든듯 아련히 번지고
+        하늘은 장미빛 무지개를 만들어내죠
+        oh 안녕하세요
+        I greet you every night
+    </div>
+    <div class="container left">
+        찬바람에 부는 옷깃 사랑에 빠진 달빛
+        눈꽃이 흩날리는 별에는 온통 잿빛
+        물감에 물이든듯 아련히 번지고
+        하늘은 장미빛 무지개를 만들어내죠
+        oh 안녕하세요
+        I greet you every night
+    </div>
+    <div class="container right">
+        찬바람에 부는 옷깃 사랑에 빠진 달빛
+        눈꽃이 흩날리는 별에는 온통 잿빛
+        물감에 물이든듯 아련히 번지고
+        하늘은 장미빛 무지개를 만들어내죠
+        oh 안녕하세요
+        I greet you every night
+    </div>
+    <div class="container center">
+        찬바람에 부는 옷깃 사랑에 빠진 달빛
+        눈꽃이 흩날리는 별에는 온통 잿빛
+        물감에 물이든듯 아련히 번지고
+        하늘은 장미빛 무지개를 만들어내죠
+        oh 안녕하세요
+        I greet you every night
+    </div>
+    <div class="container justify">
+        찬바람에 부는 옷깃 사랑에 빠진 달빛
+        눈꽃이 흩날리는 별에는 온통 잿빛
+        물감에 물이든듯 아련히 번지고
+        하늘은 장미빛 무지개를 만들어내죠
+        oh 안녕하세요
+        I greet you every night
+    </div>
+    <h3>text-indent</h3>
+    <p>문단 들여쓰기, 문단의 첫번째 문자을 들여쓰기함</p>
+    <div class="container textindent">
+        찬바람에 부는 옷깃 사랑에 빠진 달빛
+        눈꽃이 흩날리는 별에는 온통 잿빛
+        물감에 물이든듯 아련히 번지고
+        하늘은 장미빛 무지개를 만들어내죠
+        oh 안녕하세요
+        I greet you every night
+    </div>
+    <h3>line-height</h3>
+    <p>문장끼리의 간격을 조정하는 속성</p>
+    <div class="container lineheight">
+        찬바람에 부는 옷깃 사랑에 빠진 달빛
+        눈꽃이 흩날리는 별에는 온통 잿빛
+        물감에 물이든듯 아련히 번지고
+        하늘은 장미빛 무지개를 만들어내죠
+        oh 안녕하세요
+        I greet you every night
+    </div>
+    <p class="lineheight">이건 p태그</p>
+    <p class="lineheight">이건 p태그</p>
+    <p>이건 p태그</p>
+    <p>이건 p태그</p>
+
+    <h3>text-overflow</h3>
+    <p>
+        지정한 영역에서 문자가 벗어난것에 대한 설정
+        ellipsis : 말줄임표시
+        clip : 넘어가는 문장은 잘라버림.
+    </p>
+    <div class="container nowrap textover">
+        찬바람에 부는 옷깃 사랑에 빠진 달빛
+        눈꽃이 흩날리는 별에는 온통 잿빛
+        물감에 물이든듯 아련히 번지고
+        하늘은 장미빛 무지개를 만들어내죠
+        oh 안녕하세요
+        I greet you every night
+    </div>
+    
+    <style>
+        .textover{
+            overflow: hidden;
+            /* text-overflow:clip; */
+            text-overflow:ellipsis;
+        }
+        .nowrap{
+            white-space: nowrap;
+        }
+        .lineheight{
+            line-height:50px;
+        }
+        .textindent{
+            text-indent: 50px;
+        }
+        .justify{
+            text-align:justify;
+        }
+        .left{
+            text-align:left;
+        }
+        .right{
+            text-align:right;
+        }
+        .center{
+            text-align:center;
+        }
+        .container{
+            width:300px;
+            height:100px;
+            border:1px skyblue solid;
+            /* overflow: hidden; */
+        }
+
+    </style>
+
+
+    
+</body>
+</html>

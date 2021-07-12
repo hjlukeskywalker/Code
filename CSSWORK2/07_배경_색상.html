@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경/색상에 대해 알아보자</title>
+</head>
+<body>
+    <h2>색상</h2>
+    <p>
+        css로 색상을 표시할때는 색상명문명, 16진수RGB값, rgb()이용, rgba()이용
+    </p>
+    <div class="container bakcground">투명도있는 색상</div>
+    <p>이것도 content영역이 있어!</p>
+    <style>
+        .bakcground{
+            /* background-color:rgba(255,0,0,0.1); */
+            background-color:hsla(74,61%,85%,0.3);
+        }
+        .container{
+            width:300px;
+            height:200px;
+            border:1px green solid;
+        }
+    </style>
+
+    <h3>background-color</h3>
+    <p>
+        태그마다 페이지에서 차지하는 각 영역이 있는데 그 영역에 대한 색상을 선택할 수 있게 하는 속성
+    </p>
+    <div class="container bg">
+        <ul class="bg1">
+            <li>html</li>
+            <li>css</li>
+            <li>javascipt</li>
+            <li>jquery</li>
+        </ul>
+    </div>
+    <style>
+        .bg{
+            background-color:royalblue;
+        }
+        .bg1{
+            background-color:lime;
+        }
+    </style>
+
+    <h2>background-clip</h2>
+    <p>
+        태그(element)가 차지하고 있는 영역에 대한 범위
+        border-box : border의 범위까지 배경으로 본다.
+        padding-box : padding의 범위까지 
+        content-box : content의 범위까지
+    </p>
+    <div class="containerbasic">
+        <div class="container2 borderbox">border-box</div>
+        <div class="container2 paddingbox">padding-box</div>
+        <div class="container2 contentbox">content-box</div>
+    </div>
+    <style>
+        .containerbasic{
+            display:flex;
+        }
+        .container2{
+            border:10px gold dotted;
+            width:200px;
+            height:200px;
+            padding:20px;
+        }
+        .borderbox{
+            background-clip:border-box;
+            background-color:silver;
+        }
+        .paddingbox{
+            background-clip:padding-box;
+            background-color:brown
+        }
+        .contentbox{
+            background-clip:content-box;
+            background-color:coral;
+        }
+    </style>
+    <h3>background-image</h3>
+    <p>
+        태그에 이미지를 넣을때 사용하는 속성
+        사진으로 불러와서 출력 url("경로")
+    </p>
+    <div class="container2 backimg repeat"></div>
+    <h3>background-repeat</h3>
+    <p>
+        기본적으로 배경이미지를 설정하면 반복(바둑판)으로 출력이 됨
+        조정할 수 있는 속성. repeat, repeat-x/repeat-y, no-repeat
+    </p>
+    <h3>background-size</h3>
+    <p>
+        배경이미지의 크기를 조정할 수 있는 속성
+        contain : 이미지가 영역안에 모두 들어갈 수 있게 확대, 축소 -> 이미지가 모두 출력
+        cover : 영역이 꽉차게 설정함 -> 이미지 일부만 출력
+        숫자/백분률 : 크기를 지정
+    </p>
+    <div class="containerbasic">
+        <div class="container2 backimg repeat"></div>
+        <div class="container2 backimg repeat contain"></div>
+        <div class="container2 backimg repeat cover"></div>
+        <div class="container2 backimg repeat imgsize"></div>
+    </div>
+    <h3>background-position</h3>
+    <p>
+        배경이미지의 위치를 조정하는 속성
+        background-potision : left||right||top||bottom||center||숫자(절대,상대)
+    </p>
+    <div class="container2 backimg repeat imgsize imgposition"></div>
+    <h3>background-origin</h3>
+    <p>
+        배경이미지가 차지하는 범위를 설정하는 속성
+        background-origin : border-box,padding-box,content-box;
+    </p>
+    <div class="containerbasic">
+        <div class="container2 backimg repeat imgsize"></div>
+        <div class="container2 backimg repeat imgsize origin"></div>
+        <div class="container2 backimg repeat imgsize content"></div>
+    </div>
+
+    <h3>background-attachment</h3>
+    <p>
+        페이지가 스크롤에 의해 움직일때 배경 이미지의 위치를 설정하는 속성
+        scroll : 페이지가 움직이면 따라서 움직이는 속성 -> 페이지 이동하면 안보임.
+        fixed : 페이지가 움직여도 설정한 위치에 있는 속성 -> 페이지이동해도 계속 보임.
+    </p>
+    <div class="container2 size backimg repeat attachment imgposition"></div>
+    
+    <style>
+        .attachment{
+            /* background-attachment: fixed; */
+            background-attachment: scroll;
+        }
+        .origin{
+            background-origin:border-box;
+        }
+        .content{
+            background-origin: content-box;
+        }
+
+
+        .imgposition{
+            /* background-position:right bottom; */
+            background-position:50% 20%;
+        }
+        .contain{
+            background-size:contain;
+        }
+        .cover{
+            background-size:cover;
+        }
+        .imgsize{
+            /* background-size:200px 100px; */
+            background-size:100% 100%;
+        }
+        .size{
+            width:100%;
+            height:1200px;
+        }
+        .backimg{
+            background-image:url("https://pds.joins.com//news/component/htmlphoto_mmdata/201711/28/fbd5ab5f-ee35-42bd-a626-9a2f1a7c1aef.jpg");
+        }
+        .repeat{
+            /* background-repeat:repeat-x; */
+            /* background-repeat: repeat-y; */
+            background-repeat: no-repeat;
+
+        }
+    </style>
+
+    <h3>linear-gradient</h3>
+    <p>
+        색상을 점직적으로 표현해주는 속성
+        background:linaer-gradient(각도||방향,시작색, 끝색)
+    </p>
+    <div class="container2 linearg"></div>
+    <div class="container2 radialg"></div>
+    <style>
+        .radialg{
+            /* background:radial-gradient(circle closest-side,darkgreen,navy 20%,white,black); */
+            background:repeating-radial-gradient(circle closest-side,darkgreen,navy 20%,white,black);
+        }
+        .linearg{
+            /* background:linear-gradient(to right, red,orange); */
+            /* background:linear-gradient(90deg, lightgreen,crimson); */
+            background:repeating-linear-gradient(90deg, lightgreen 10%,crimson 20%,
+             aqua 30%,purple 50%, royalblue 40%, magenta 50%);
+
+        }
+    </style>
+    
+
+
+</body>
+</html>

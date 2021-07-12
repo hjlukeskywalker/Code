@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테두리스타일</title>
+</head>
+<body>
+    <h1>태그 테두리에 스타일 적용하기</h1>    
+    <div id="container">
+        <div>none(default)</div>
+        <div class="dashed">dashed</div>
+        <div class="dotted">dotted</div>
+        <div class="double">double</div>
+        <div class="groove">grove</div>
+        <div class="inset">inset</div>
+        <div class="outset">outset</div>
+        <div class="ridge">ridge</div>
+        <div class="solid">solid</div>
+        <div class="all">all</div>
+    </div>
+
+    <style>
+        .all{
+            border:3px outset yellow;
+        }
+        .dashed{
+            border-style:dashed;
+            border-width:5px;
+        }
+        .dotted{
+            border-style:dotted;
+            border-top-style:solid;
+            border-right-width:9px;
+        }
+        .double{
+            border-style:double;
+            border-color:aqua;
+            border-left-color:crimson;
+        }
+        .groove{
+            border-style:groove;
+        }
+        .inset{
+            border-style:inset;
+        }
+        .outset{
+            border-style:outset;
+        }
+        .ridge{
+            border-style:ridge;
+        }
+        .solid{
+            border-style:solid;
+        }
+        #container>div{
+            width:200px;
+            height:200px;
+            margin:20px;
+        }
+        #container{
+            display:flex;
+            flex-wrap: wrap;
+        }
+    </style>
+
+    <h3>box-shadow처리하기</h3>
+    <div class="boxshadow">
+        태그에 테두리에 그림자넣기
+    </div>
+    <style>
+        .boxshadow{
+            width:500px;
+            height:200px;
+            border:1px lime solid;
+            box-shadow:5px 5px 5px gray,7px 7px 5px red;
+        }
+    </style>
+
+
+
+</body>
+</html>

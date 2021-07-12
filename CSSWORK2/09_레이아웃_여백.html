@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃 여백 알아보기</title>
+</head>
+<body>
+    <h1>여백</h1>
+    <p>
+        margin : 태그와 태그사이, page와 태그 사이의 간격을 조정하는 속성
+        padding : 태그에서 테두리와 content사이의 간격을 조정하는 속성
+    </p>
+    <h3>padding설정하기</h3>
+    <div class="parent">
+        <div class="container">기본</div>
+        <div class="container paddingall">콘텐츠내용</div>
+        <div class="container paddingleft">콘텐츠내용</div>
+        <div class="container">
+            <img class="paddingall" src="duck.jpg"/>
+        </div>
+        <div class="container paddingtest">기본</div>
+    </div>
+    <style>
+        .parent{
+            display:flex;
+        }
+        .container{
+            border:1px green solid;
+            width:200px;
+            height:100px;
+        }
+        .paddingall{
+            padding:10px;
+        }
+        .paddingleft{
+            padding-left:50px;
+        }
+        .paddingtest{
+            padding:10px 0 0 20px;
+        }
+    </style>
+
+    <h3>margin설정하기</h3>
+    <div class="container marginall inline">div1</div>
+    <div class="container inline margintop">div3</div>
+    <div class="container marginleft inline">div2</div>
+
+    <div class="container margintest">div4</div>
+    <div class="container margintest">div5</div>
+    <div class="container margintest">div6</div>
+
+
+    <style>
+        /* inline속성에서 margin-top, bottom은 설정되지 않음 */
+        .inline{
+            display: inline-block;
+        }
+        .marginall{
+            margin:50px;
+        }
+        .marginleft{
+            margin-left:100px;
+        }
+        .margintop{
+            margin-top:100px;
+        }
+        .margintest{
+            margin:0 0px 0 0px;
+            padding:0 0 0 0;
+        }
+    </style>
+
+    <header>
+        <div>
+            <img src="https://img4.yna.co.kr/photo/cms/2019/05/02/02/PCM20190502000402370_P2.jpg" width="300" height="300px" alt="">
+        </div>
+        <div>
+            <nav>   
+                <ul>
+                    <li>즐겨찾기</li>
+                    <li>마이페이지</li>
+                    <li>로그아웃</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <style>
+        header {
+            display:flex;
+        }
+        header>div{
+            height:300px;
+            /* display:inline-block; */
+            margin-right:40px; 
+            border:1px red solid;
+        }
+        ul{
+            margin-left:20px;
+            padding:0 0 0 0;
+            padding-top:100px;
+            border:1px blue solid;
+            
+        }
+        ul>li{
+            display: inline;
+            margin-right:30px;
+            margin-left:100px;
+            /* padding-top:100px; */
+        }
+    </style>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변경이용하기</title>
+</head>
+<body>
+    <h1>변형이용하기</h1>
+    <p>
+        태그가 특정 동작에 의해(마우스클릭, 마우스 올라감) 변형(이동, 확대, 찌그러짐)되는 것
+    </p>
+    <h3>태그 이동시키기</h3>
+    <p>
+        translate함수를 이용하면 설정된 태그가 특정위치로 이동하게됨.
+    </p>
+    <img class="translate"src="https://post-phinf.pstatic.net/MjAxOTA0MTVfMjEz/MDAxNTU1MjkyMjkxNjY0.M1ykUcA0UOQSgbMxdHGl5tI4_3vxZAjoK4IEH14oUDQg.pKrH34vdAKUg9EqqpzpA7nmHDC6a5Ne5bi1XdYoHgzAg.JPEG/%EB%8F%99%EB%AC%BC%EA%B3%84%ED%95%B5%EC%9D%B8%EC%8B%B8%EC%B9%B4%ED%94%BC%EB%B0%94%EB%9D%BC_02.jpg?type=w1200" width="200" height="200" alt="">
+    <br>
+    <img class="transx"src="https://post-phinf.pstatic.net/MjAxOTA0MTVfMjEz/MDAxNTU1MjkyMjkxNjY0.M1ykUcA0UOQSgbMxdHGl5tI4_3vxZAjoK4IEH14oUDQg.pKrH34vdAKUg9EqqpzpA7nmHDC6a5Ne5bi1XdYoHgzAg.JPEG/%EB%8F%99%EB%AC%BC%EA%B3%84%ED%95%B5%EC%9D%B8%EC%8B%B8%EC%B9%B4%ED%94%BC%EB%B0%94%EB%9D%BC_02.jpg?type=w1200" width="200" height="200" alt="">
+    <br>
+    <img class="transy"src="https://post-phinf.pstatic.net/MjAxOTA0MTVfMjEz/MDAxNTU1MjkyMjkxNjY0.M1ykUcA0UOQSgbMxdHGl5tI4_3vxZAjoK4IEH14oUDQg.pKrH34vdAKUg9EqqpzpA7nmHDC6a5Ne5bi1XdYoHgzAg.JPEG/%EB%8F%99%EB%AC%BC%EA%B3%84%ED%95%B5%EC%9D%B8%EC%8B%B8%EC%B9%B4%ED%94%BC%EB%B0%94%EB%9D%BC_02.jpg?type=w1200" width="200" height="200" alt="">
+    <br>
+    <img class="transz"src="https://post-phinf.pstatic.net/MjAxOTA0MTVfMjEz/MDAxNTU1MjkyMjkxNjY0.M1ykUcA0UOQSgbMxdHGl5tI4_3vxZAjoK4IEH14oUDQg.pKrH34vdAKUg9EqqpzpA7nmHDC6a5Ne5bi1XdYoHgzAg.JPEG/%EB%8F%99%EB%AC%BC%EA%B3%84%ED%95%B5%EC%9D%B8%EC%8B%B8%EC%B9%B4%ED%94%BC%EB%B0%94%EB%9D%BC_02.jpg?type=w1200" width="200" height="200" alt="">
+    <style>
+        img{
+            margin-left:200px;
+            width:200px;
+            height:200px;
+        }
+        .translate:hover{
+            transform:translate(200px, 200px);
+        }
+        .transx:active{
+            transform:translateX(500px);
+        }
+        .transy:active{
+            transform:translateY(500px);
+        }
+        .transz:active{
+            transform:perspective(200px) translateZ(100px);
+        }
+    </style>
+
+    <h3>태그 확대하기</h3>
+    <p class="scale">
+        여러분 이거는 재미있나요?
+    </p>
+    <p class="scalex">
+        여러분 이거는 재미있나요?
+    </p>
+    <img class="scaley" src="https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4arX/image/2IgbQYFcT34jsk5tUtUBIzouMWg.jpg" alt="">
+    <style>
+        h3~p{
+            margin-left:200px;
+        }
+        .scale:hover{
+            transform:scale(1.5);
+            /* transform:scaleX(1.5); */
+        }
+        .scalex:hover{
+            transform:scaleX(1.5);
+        }
+        .scaley:hover{
+            transform:scaleY(1.5);
+        }
+    </style>
+    <h3>skew적용하기</h3>
+    <img class="skew" src="https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4arX/image/2IgbQYFcT34jsk5tUtUBIzouMWg.jpg" alt="">
+    <style>
+        .skew:hover{
+            /* transform:skew(30deg,30deg); */
+            /* transform:skewX(30deg); */
+            transform:skewY(30deg);
+
+        }
+    </style>
+    <h3>rotate</h3>
+    <img class="rotate" src="https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4arX/image/2IgbQYFcT34jsk5tUtUBIzouMWg.jpg" alt="">
+    <style>
+        .rotate:hover{
+            /* transform:rotate(45deg); */
+            transform: perspective(200px) rotateX(45deg);
+            /* transform: perspective(200px) rotateY(45deg); */
+        }
+    </style>
+
+    <h3>트렌지션 적용하기</h3>
+    <p>
+        태그가 변형속성에 의해 변형이 될때 부드럽게 변형이 될수 있게 해주는 속성
+        transition-property : 적용할 속성
+        transition-duration : 지속시간
+        transition-timing-function:linear, ease,ease-in, ease-out
+        transition : 한번에 모든속성을 지정하는 것
+    </p>
+    <div class="transitiondiv transition transi"></div>
+    <style>
+        .transitiondiv{
+            width:100px;
+            height:100px;
+            border:1px red solid;
+            transition-property:background-color,transform;
+            transition-duration:1s;
+        }
+        .transition:active{
+            background-color:lime;
+            transform:translateX(100px)
+        }
+        .transi:hover{
+            background-color:purple;
+        }
+    </style>
+</body>
+</html>

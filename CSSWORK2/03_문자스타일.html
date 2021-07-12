@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h3>글꼴스타일 적용하기</h3>
+    <h2 class="defaultFont">글꼴적용하기</h2>
+    <p class="defaultFont">
+        웹폰트를 이용해서 페이지를 열때 글꼴을 가져와서 사용하게할 수 있음
+        네트워크통신이 가능하면 글꼴제공하는 사이트에서 글꼴을 가져와 사용하는것
+    </p>
+    <div id="content" style="font-size:50px">
+        <p>기본글꼴로 출력하기</p>
+        <p id="family1">궁서체적용하기</p>
+    </div>
+    <p>안녕하세요 저는 굵기를 조정할꺼에요</p>
+    <p class="bolder">안녕하세요 저는 굵기를 조정할꺼에요</p>
+    <p class="bold">안녕하세요 저는 굵기를 조정할꺼에요</p>
+    <p class="lighter">안녕하세요 저는 굵기를 조정할꺼에요</p>
+    <p>영문자 MemberLevel</p>
+    <p class="variant">영문자 member-level</p>
+    <p class="all">전체 글꼴스타일 한번에 적용하기 today class finish!</p>
+    <style>
+        .all{
+            font: italic small-caps bolder 30px "Do Hyeon";
+        }
+        .variant{
+            font-variant: small-caps;
+            font-style:none;
+        }
+        .bold{
+            font-weight:900;
+        }
+        .lighter{
+            font-weight:lighter;
+        }
+        .bolder{
+            font-weight:bolder;
+        }
+        .defaultFont{
+            font-family:"Song Myung";
+            /* font-weight:"bolder"; */
+            /* font-weight:"lighter"; */
+        }
+        div>p:first-child{
+            /* font-size:2em; */
+            font-size:2rem;
+
+        }
+        div>p#family1{
+            font-family:"Do Hyeon","휴먼편지체";
+            font-size:16pt;
+        }
+        html{
+            font-size:20px;
+        }
+
+
+    </style>
+
+
+</body>
+</html>
