@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>태그에 접근하기</title>
+</head>
+<body>
+    <h1>태그접근하는 방법</h1>
+    <p>
+        javascript에서 태그는 하나의 객체로 본다.(DOM)
+        객체에서는 태그를 표현하는 properties(속성)가 있음
+        <br>
+        태그에 접근하는 방법은 4가지가 있음
+        * 속성값을 이용해서 태그를 가져옴
+    </p>
+    <ol>
+        <li>id값을 기준으로 가져오기</li>
+        <li>class값을 기준으로 가져오기</li>
+        <li>tagName값을 기준으로 가져오기</li>
+        <li>name값을 기준으로 가져오기</li>
+    </ol>
+    <!-- <p id class width height name value style></p>     -->
+    <h3>id값을 기준으로 가져오기</h3>
+    <p>
+        태그의 id속성에 있는 값을 기준으로 태그를 가져옴
+        document.getElementById("id속성 값"); -> id속성의 값이 일치하는 태그 <mark>한개</mark>를 가져옴.
+    </p>
+    <div id="test">div1</div>
+    <div id="test">div2</div>
+    <script>
+        // var el=document.getElementById("test");
+        // console.log(el);
+        // el.innerHTML="이건 입력한값"
+        // console.dir(el);
+        // el.style.backgroundColor="red";
+        var el= document.getElementById("test");
+        console.log(el);
+        el.innerHTML="민주 ♥"
+        console.dir(el);
+        el.style.backgroundColor="yellow";
+    </script>
+
+
+    <!-- <style>
+        p{
+            background-color
+        }
+    </style> -->
+    <h3>class속성을 기준으로 값을 가져오기</h3>
+    <p>
+        태그의 설정된 class속성 값을 기준으로 태그객체 가져오기
+        중복값을 허용 -> 다수가 있으면 다수의 태그객체를 불러옴
+        document.getElementsByClassName("class속성값");
+    </p>
+    <p class="a">p1</p>
+    <p>p2</p>
+    <div class="a">div1</div>
+    <div class="a b">div2</div>
+    <div class="a">div3</div>
+    <h2 class="a">h2</h2>
+    <script>
+        var els=document.getElementsByClassName("a");//페이지에서 클래스속성값이 a인 태그 모두를 가져옴
+        console.log(els);
+        //배열방식으로 데이터를 가져옴
+        //복수로 가져온 태그를 한개씩 접근하려면 ->자바의 배열 접근 방식과 동일
+        //els[0]
+        console.log(els[0]);
+
+        //clasName으로 가져온 태그는 반드시 인덱스로 접근해서 속성을변경해야함.
+        //els.style.backgroundColor="purple"; X
+        els[0].style.backgroundColor="purple";
+
+    </script>
+
+    <h3>태그명으로 태그가져오기</h3>
+    <ul>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+        <li>목록4</li>
+    </ul>
+    <ol>
+        <li>ol1</li>
+        <li>ol2</li>
+        <li>ol3</li>
+        <li>ol4</li>
+    </ol>
+    <script>
+        var lis=document.getElementsByTagName("li");
+        console.log(lis);
+        console.log(lis[4]);
+    </script>
+
+    <!-- <h3>name속성으로 태그가져오기</h3>
+    <form action="">
+        <input type="checkbox" name="hobby" value="운동">운동
+        <input type="checkbox" name="hobby" value="코딩">코딩
+        <input type="checkbox" name="hobby" value="독서">독서
+        <input type="checkbox" name="hobby" value="여행">여행
+        <input type="checkbox" name="hobby" value="잠">잠
+    </form>
+    <script>
+        var els=document.getElementsByName("hobby");
+        console.log(els);
+        console.log(els[0]);
+    </script>    -->
+
+    <h3>민주 취미 ♥</h3>
+    <form action="">
+        <input type="checkbox" name="hobby" value="등산">등산
+        <input type="checkbox" name="hobby" value="뮤지컬">뮤지컬관람
+        <input type="checkbox" name="hobby" value="독서">독서
+        <input type="checkbox" name="hobby" value="넷플릭스">넷플릭스보기
+    </form>
+    <h3>선택자를 이용해서 태그를 가져오기</h3>
+    <p>
+        css에서 사용한 선택자를 이용해서 태그를 지정하여 가져오는 것
+        #test -> id가 test인 태그
+        .test -> class가 test인 태그
+        [type=test] -> type속성이 test인 태그
+        div>p -> div태그에 직접 연결된 p<br>
+
+        document.querySelector("선택자"); -> 한개의 태그만 가져오는것 다수가 있으면 첫번째 태그만 가져옴
+        document.querySelectorAll("선택자"); -> 다수의 태그를 가져오는 것
+    </p>
+     <script>
+        var idTag=document.querySelector("#test");
+        idTag=document.querySelectorAll("h3+p");
+        console.log(idTag);
+     </script>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수활용하기</title>
+</head>
+<body>
+    <h1>변수선언하기</h1>
+    <p>
+        변수선언하는 방법
+        var 변수명;<br>
+        자바스크립트에서 변수를 선언할때는 자료형을 지정하지 않음
+        자바스크립트 변수의 타입은 값을 대입했을때 그 값의 타입으로 결정된다.
+    </p>
+    <p>
+        변수는 접근할 수 있는 범위에 따라 영역(scope)이 구분<br>
+        global scope : page내 어디서든 접근이 가능한 변수 -> window객체의 멤버변수
+        local scope : function내부에서 선언한 변수 -> function내부에서만 사용이 가능
+    </p>
+    <p>
+        자바스크립트는 블록범위를 허용하지 않는다.
+        자바에서는.....
+        if(){ String test      } 외부에서 접근이 가능?
+        for(){int a} a -> 불가능
+        자바스크립트!
+        if(){var test} console.log(a)-> 외부에서 접근이 가능함.
+    </p>
+    <p>
+        변수를 선언시에 주의할점! 
+        변수를 중복으로 선언하면 에러가 발생하지 않음!
+        변수중복에 대해 잘 체킹을 해야했음. -> es6 변경!
+    </p>
+    <script>
+        var test="첫번째 선언";//기본적인 변수선언 -> 전역변수
+        console.log(test);
+        function localScopeTest(){
+            var funcVari;//로컬변수
+            console.log(test);
+            console.log(funcVari);
+        }
+        localScopeTest();//함수호출
+        //console.log(funcVari);
+        //자바스크립트는 블록범위를 허용하지 않는다.
+        var age=19;
+
+        if(age>10){
+            var name="유병승";//전역변수
+        }
+
+        console.log(name);
+
+        for(var i=0;i<10;i++){
+            console.log(i);
+        }
+        console.log("외부에서 호출 "+i);
+        console.log(window);
+    </script>
+
+    <script>
+        var test="두번째 선언";//체크해주지 않기때문에 분기처리했어야함.
+        console.log(test);
+        // 
+        address="경기도 시흥시";
+        function notVar(){
+            email="prince0324@naver.com";//global스코프
+        }
+        notVar();  
+        console.log(window.email);
+    </script>
+
+    <p>
+        es6에 와서 변수를 선언하는 예약어를 추가
+        블록스코프를 유지하고, 중복선언하는것을 방지하는 기능
+        let, const예약어를 사용해서 변수를 선언!
+        let : 블록스코프영역을 가지는 변수를 선언할때
+        const : 상수를 저장하는 변수를 선언할때 사용
+    </p>
+    <script>
+        let name="유병승";
+        let name1="김지한";
+        console.log(name1);
+        if(name=="유병승"){
+            let phone=10;//블록스코프영역으로 설정됨.
+            console.log(phone);
+        }
+       // console.log(phone);
+        name1="호호호"
+        console.log(name1);
+        const nickname="유뱅";//상수
+        console.log(nickname);
+        //nickname="유병승병승";
+        for(let i1=0;i1<10;i1++){
+            console.log(i1);
+        }
+       //console.log(i1);
+    </script>
+
+    <h2>자바스크립트 자료형</h2>
+    <p>
+        자바스크립트는 자료형을 가지고 있으며 변수의 자료형이 결정되는 것은
+        변수에 값(리터럴) 대입할때 임.
+        각 자료형을 알아보고, 리터럴표현방법을 알아보자.
+        문자열(string), 숫자(number), 배열([]), 객체({}), 함수(function()), undefined, boolean
+    </p>
+    <button onclick="testType();">변수타입알아보기</button>
+    <div id="container"></div>
+    <script>
+        function testType(){
+            //자료형 리터럴사용법
+            //string -> "값", '값' 문자로 표현됨.
+            let name="유병승";
+            name='유병승';
+            //number -> 30, 3.14
+            let age=19;
+            let height=180.5;
+            //boolean -> true, false
+            let falg=true;
+            flag=false;
+            //배열 -> new Array(1,2,3,4) / [1,2,3,4]
+            let arr=[1,2,3,4];
+            arr=new Array(1,2,3,4);
+            //객체 -> {key:value,key:value ..}/new 생성자함수(값,값)
+            let obj={name:"유병승",age:19}
+            //함수 -> function(){ console.log('유병승');}
+            let func=function(){console.log("유병승")};
+
+            //자바스크립트에서 변수는 유연함.
+            console.log(name);
+            name=age;
+            console.log(name);
+            name=falg;
+            console.log(name);
+            name=arr;
+            console.log(name);
+        }
+    </script>
+
+    <h3>변수의 타입확인하기</h3>
+    <p>
+        typeof함수를 이용하면 타입을 알 수 있음
+        typeof(변수명) / typeof 변수명
+    </p>
+    <button onclick="typeTest();">typeof 이용하기</button>
+    <script>
+        function typeTest(){
+            let temp="유병승";
+            console.log("temp : "+temp+" 자료형 : "+typeof(temp));
+            temp=180.5
+            console.log("temp : "+temp+" 자료형 : "+typeof(temp));
+            temp=true;
+            console.log("temp : "+temp+" 자료형 : "+typeof(temp));
+            temp=["유병승",19,180.5];
+            console.log("temp : "+temp+" 자료형 : "+typeof(temp));
+            temp={name:"유병승",age:19,height:180.5};
+            console.log("temp : "+temp+" 자료형 : "+typeof(temp));
+            temp=function(){console.log("19")};
+            console.log("temp : "+temp+" 자료형 : "+typeof(temp));
+            console.log("자료형 : "+typeof(bs));
+        }
+    </script>
+    
+
+
+
+</body>
+</html>

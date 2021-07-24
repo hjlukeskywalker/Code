@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window객체 알아보기</title>
+</head>
+<body>
+    <h1>윈도우객체</h1>
+    <p>
+        윈도우객체는 자바스크립트의 최상위 객체로 모든 객체와 함수를 가지고 있으며
+        기본객체로 설정되어있음.
+        browser한개마다 한개의 윈도우 객체가 생성됨.
+        윈도우객체의 주요자식객체
+        BOM
+        location : 브라우저 url주소를 설정/ 정보
+        navigator : 브라우저에 대한 정보, 미디어스트림 등의 설정을 가져옴.
+        screen : 사용자 화면에 대한 정보
+        history : 페이지이동 이력 정보
+        DOM
+        document : 브라우저의 html태그들을 객체화해서 처리하는 객체
+        
+        주요함수 윈도우를 조작하고, 다른 추가기능(입력, 알림, 새창열기, 주기적인 실행 등)
+        resizeTo()
+        moveTo()
+        focus()
+        height
+        width
+        alert, prompt confirm, setInterval, setTimeout
+    </p>
+    <script>
+        console.log(window);
+    </script>
+    
+    <h1>윈도우 함수이용하기</h1>
+    <h3>윈도우 open함수</h3>
+    <p>
+        새창을 생성하는 함수<br>
+        [window.]open('','','');<br>
+        첫번째 : 새창을 열었을때 오픈할 페이지주소(url)
+        두번째 : target속성(_self,_blank)
+        세번째 : 새로오픈하는 창에 대한 설정(크기)
+    </p>
+    <button onclick="newWindow();">새창열기</button>
+    <button onclick="childControl();">자식객체 조작하기</button>
+    <p>
+        open함수는 새로생긴 윈도우객체를 반환함.
+        반환받은 윈도우객체로 부모페이지에서 자식창을 수정할 수 있다.
+        자식 윈도우에서는 opener객체 통해 부모의 window객체를 가지고 있음.
+    </p>
+    <div id="container"></div>
+    <script>
+        const childControl=()=>{
+            const child=open("","_blank","width=400,height=300");
+            let temp="<script>";
+                temp+="function sendData(){";
+                temp+="let con=opener.document.getElementById('container');";
+                temp+="let val=document.getElementById('data').value;";
+                temp+="con.innerHTML='<h2>'+val+'</h2>';}";
+                temp+="</";
+                temp+="script>";
+                child.document.write("<html><body><h2>부모창에서 작성한내용</h2><input   id='data' type='text'><button onclick='sendData();'>데이터전송</button>"+temp+"</body></html>");
+        }
+        var child;
+        const newWindow=()=>{
+            //open();
+            //window.open("http://www.naver.com","_self");
+            child=open("12_객체.html","_blank","height=300,width=400"); 
+            console.log(child);
+            let el=child.document.getElementById("userId");
+            console.log(el);
+        }
+    </script>
+    <h2>close()</h2>
+    <p>열린 창을 닫는 함수</p>
+    <button onclick="childClose();">자식창닫기</button>
+    <script>
+        const childClose=()=>{
+            child.close();
+        }
+    </script>
+
+    <h2>setTimeout() / setInterval()</h2>
+    <p>
+        setTimeout() : 일정시간 후 특정한 로직(함수)을 한번만 실행하는것
+        첫번째 매개변수 : 로직(함수)
+        두번째 매개변수 : 시간(1/1000)
+        [세번째 매개변수 : 로직실행시 전달할값]
+        <br>
+        setInterval() : 일정시간 간격으로 특정한 로직(함수)을 실행하는 것
+        첫번째 매개변수 : 로직(함수)
+        두번째 매개변수 : 시간(1/1000)
+        [세번째 매개변수 : 로직실행시 전달할값]
+        <br>
+        setTimeout()/setInterval()실행을 멈출 수 있게 하는 함수
+        clearTimeout(setTimeout) / clearInterval(setInterval)
+
+    </p>
+    <button onclick="setTimeoutTest()">setTimeoutTest</button>
+    <button onclick="setIntervalTest()">setIntervalTest</button>
+    <button onclick="stopInterval()">Stop</button>
+    <div id="container">
+        <h1 id="count"></h1>
+    </div>
+    <script>
+        const setTimeoutTest=()=>{
+            let child=open("","","width=300,height=300");
+            child.alert("이창은 3초후에 닫힙니다.");
+            const timeid=setTimeout(()=>{
+                child.close();
+            },3000);
+            console.log(timeid);
+            clearTimeout(timeid);//setTimeout실행을 멈춤
+        }
+        let interId;
+        const setIntervalTest=()=>{
+            let target=document.querySelector("div#container>h1#count");
+            let count=0;
+            interId=setInterval(()=>{
+                target.innerHTML=count++;
+            },1000);
+        };
+        const stopInterval=()=>{
+            clearInterval(interId);
+        }
+    </script>
+
+    <h3>윈도우 크기, 위치 조정하기</h3>
+    <button onclick="createWin()">윈도우생성</button>
+    <button onclick="winSizeControl();">윈도우 크기조절</button>
+    <button onclick="windPositionControl();">윈도우 위치조정</button>
+    <script>
+        let ch;
+        const createWin=()=>{
+            ch=open("","","width=200,height=200");
+            setInterval(()=>{
+                winSizeControl();
+                windPositionControl();
+            },100);
+        }
+        const winSizeControl=function(){
+            ch.resizeTo(Math.floor(Math.random()*700),Math.floor(Math.random()*700)); 
+            
+        }
+        const windPositionControl=()=>{
+            ch.moveTo(Math.floor(Math.random()*700),Math.floor(Math.random()*700));
+        }
+
+        onload=()=>{
+            document.getElementById("target1").innerHTML="<h1>이거추가</h1>";
+        }
+        onload=()=>{
+
+        }
+    </script>
+
+    <h3>onload속성을 이용하기</h3>
+    <p>
+        페이지에 있는 코드를 다 로드한 다음에 실행되는 이벤트
+        onload는 페이지에 하나만 가능
+    </p>
+    <div id="target1"></div>
+
+</body>
+</html>

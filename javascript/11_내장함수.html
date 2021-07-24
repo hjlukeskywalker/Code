@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장함수</title>
+</head>
+<body>
+    <h2>인코딩관련 내장함수</h2>
+    <p>
+        인코딩, 디코딩관련 함수
+        네트워상에서 정보(데이터)를 공유하기 위해서 문자에 대한 처리 중
+    </p> 
+    <p>
+        인코딩, 디코딩의 방법은 mapping<br>
+        escape / unescape : 영문, 숫자, 일부특수기호(@,*,-,_,.,/) 제외한 모든문자를 인코딩처리하는 함수<br>
+        encodeURI / decodeURI : escape에서 인터넷주소에 사용되는 일부 특수기호(:,;, / = &)는 빼고 인코딩처리함.
+        encodeURIComponent / decodeURIComponent : 알파벳, 숫자를 제외한 모든 문자를 인코딩처리
+    </p>
+    <button onclick="test();">실행확인</button> 
+    <div id="area"></div>
+    <script>
+        function test(){
+            let uri="http://www.naver.com?test=한글입니다.";
+            let esEncode=escape(uri);
+            let enURI=encodeURI(uri);
+            let enURIco=encodeURIComponent(uri);
+            let area=document.getElementById("area");
+            
+            area.innerHTML=`escape : ${esEncode}<br>`;
+            area.innerHTML+=`encodeURI : ${enURI}<br>`;
+            area.innerHTML+=`encodeURIComponent : ${enURIco}<br>`;
+            area.innerHTML+=`unescape : ${unescape(esEncode)}<br>`;
+            area.innerHTML+=`decodeURI : ${decodeURI(enURI)}<br>`;
+            area.innerHTML+=`decodeURIComponent : ${decodeURIComponent(enURIco)}<br>`;
+        }
+    </script>
+
+
+
+
+
+</body>
+</html>

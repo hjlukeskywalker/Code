@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>형변환하기</title>
+</head>
+<body>
+    <h3>숫자 -> 문자로 변경</h3>
+    <script>
+        let su=19;
+        let name="병승";
+        console.log(su+name,typeof(su+name));
+        console.log(su, typeof(su));
+        console.log(su.toString(),typeof(su.toString()));
+    </script>
+
+    <!-- <h2>숫자 -> 문자로 변경</h2>
+    <script>
+        var sud2=21;
+        var namee="호준";
+        console.log(sud2+namee,typeof(sud2+namee));
+        console.log(sud2, typeof(sud2));
+        console.log(sud2.toString(),typeof(sud2.toString()));
+    </script> -->
+
+
+    <h3>문자를 숫자로 변경하기</h3>
+    <p>
+        Number()함수이용, parseInt()함수이용
+    </p>
+    <input type="number" id="su">
+    <input type="number" id="su2">
+    <button onclick="sum();">계산하기</button>
+    <div id="result"></div>
+    <script>
+        function sum(){
+            let su=document.getElementById("su");
+            console.log(su.value,typeof(su.value));
+            let su2=document.getElementById("su2");
+            console.log(su2.value,typeof(su2.value));
+            document.getElementById("result").innerHTML=Number(su.value)+Number(su2.value);
+        }
+        let su1=19;
+        let strSu="19";
+        let strSu2="19살";
+        console.log(su,typeof(su1));
+        console.log(strSu,typeof(strSu));
+        console.log(su+strSu);
+        console.log(su+Number(strSu));
+        console.log(su+strSu2);
+        console.log(su+parseInt(strSu2));
+    </script>
+
+</body>
+</html>

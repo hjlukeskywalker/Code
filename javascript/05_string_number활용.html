@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열객체, 숫자객체 활용</title>
+</head>
+<body>
+    <h1>String객체 함수활용하기</h1>
+    <script>
+        //1. 영문자를 대문자, 소문자로 처리하는 함수
+        //toUpperCase()/toLowerCase()
+        console.log('abc'.toUpperCase());
+        console.log('ABC'.toLowerCase());
+        //2. 문자열의 길이를 확인하는 함수
+        // length
+        console.log('rclass'.length);
+        //3. 문자열에서 인덱스에 있는 문자를 출력하는 함수
+        //charAt()
+        console.log("유병승".charAt(0));
+        console.log("ABC".charCodeAt(0));
+        //4. 특정문자의 위치를 찾는 함수 
+        //indexOf(), lastIndexOf()
+        console.log("유병승".indexOf("병"));
+        console.log("유병병병승".lastIndexOf("병"));
+        //5. 특정문자를 잘라내는 함수
+        //substring()
+        console.log("유병승 천재".substring(4));
+        console.log("유병승 천재".substring(0,3));
+        //6. 구분자로구분할수 있는 문자열을 배열로 변환하는 함수
+        //split()
+        let names="유병승,김상현,김예진,김지한,권설영";
+        let arrNames=names.split(',');
+        console.log(names);
+        console.log(arrNames);
+        //7. 문자열에서 일부문자열을 찾는 함수
+        //includes()
+        console.log("유병승 천재".includes("천재"));
+        //8. 문자열을 특정문자로 변경하는 함수
+        //replace()
+        console.log("유병승 천재".replace("천재","바보"));
+        //9. 문자열의 공백을 제거하는 함수
+        //trim();
+        console.log("유병승       ");
+        console.log("유병승       ".trim());
+    </script>
+    
+    <input type="text" id="userId" name="userId" placeholder="아이디는 4글자이상" onkeyup="checkId()"><span id="result"></span>
+    <input type="text" name="gender" id="gender" placeholder="성별은 M/F로 입력해주세요"><button onclick="checkGender();">성별확인</button>
+    <script>
+        function checkGender(){
+            let e=document.getElementById("gender");
+            let val=e.value;
+            e.value=val.toUpperCase();
+        }
+        function checkId(){
+            let input=document.getElementById("userId");
+            let value=input.value;
+            let result=document.getElementById("result");
+            if(value.length<4){
+                result.innerHTML="4글자 이상 입력하세요";
+            }else{
+                result.innerHTML="";
+            }
+        }
+    </script>
+    <!-- <input type="text" id="userid" name="userid" placeholder="아이디는 5글자이상" onkeyup="checkId()"><span id="result"></span>    
+    <input type="text" id="gender" name="gender" placeholder="성별은 대문자로 입력해주세요"><button onclick="checkGender();">성별확인</button>
+    <script>
+        function checkGender(){
+            let e=document.getElementById("gender");
+            let val=e.value;
+            e.value=val.toUpperCase();
+        }
+        function checkId(){
+            let input=document.getElementById("userid");
+            let value=input.value;
+            let result=document.getElementById('result');
+            if(value.length<5){
+                result.innerHTML="5글자 이상 입력하세요";
+            }else{
+                result.innerHTML="";
+            }
+        }
+    </script> -->
+    
+    
+    
+    
+    
+    
+    <h2>숫자처리 객체</h2>
+    <p>
+        Number객체 : 숫자관련
+        Math객체 : 랜덤값, 소수점처리관련, 수학적계산
+    </p>
+    <button onclick="numberTest()">Number객체 함수</button>
+    <button onclick="mathTest()">Math객체 함수</button>
+    <script>
+        function numberTest(){
+            //최대, 최소값확인
+            console.log(Number.MAX_VALUE);
+            console.log(Number.MIN_VALUE);
+            //정수인지확인하는 함수
+            //isInteger()
+            console.log(Number.isInteger(100));
+            console.log(Number.isInteger(180.5));
+        }
+        function mathTest(){
+            //random값처리
+            console.log(Math.floor(Math.random()*10));
+            //절대값처리
+            console.log(Math.abs(-10),Math.abs(10));
+            //소수점 버리는함수
+            console.log(Math.floor(180.5));
+            //소수점 반올림 함수
+            console.log(Math.round(166.66));
+            //무조건올림
+            console.log(Math.ceil(1.2));
+            //숫자가 아닌 값을 매개변수로 넣으면?
+            console.log(Math.floor("십"));
+            //console.log(Math.floor("십")=='NaN');
+            //NaN인지 여부를 비교하려면
+            //isNaN();
+            console.log(isNaN(Math.floor("십")));
+        }
+    </script>
+
+
+
+
+</body>
+</html>

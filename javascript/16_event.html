@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트처리하기</title>
+</head>
+<body>
+    <h1>이벤트 속성 알아보기</h1>
+    <dl>
+        <dt>input태그관련 이벤트</dt>
+        <dd>focus : input태그에 focus되었을때 발생 *  주의 blur가 같이 처리됨 -> 무한루프가 됨</dd>
+        <dd>blur : input태그의 focus가 사라졌을때 발생 </dd>
+        <dd>change : input태그의 value속성의 값이 변경됐을때 발생 * select태그 이벤트에 많이 사용</dd>
+        <dd>submit : form태그에서 submit타입을 클릭했을때 발생 form태그로 데이터전송시 발생</dd>
+        <dd>reset : form태그에서 reset타입을 클랙했읐때 발생</dd>
+    </dl>
+
+    <dl>
+        <dt>mouse관련 이벤트</dt>
+        <dd>click : 마우스 좌클릭했을때 발생</dd>
+        <dd>dbclick : 마우스 더블클릭했을때 발생</dd>
+        <dd>mouseenter : 지정한 영역안에 마우스가 들어왔을때 발생</dd>
+        <dd>mouseleave : 지정한 영역안에서 마우스가 나갔을때 발생</dd>
+    </dl>
+
+    <dl>
+        <dt>key관련 이벤트</dt>
+        <dd>keyup : 키가 올라왔을때 발생</dd>
+        <dd>keydown : 키가 내려갔을때 발생</dd>
+        <dd>keypress : 키가 눌렸을때 발생</dd>
+    </dl>
+    
+    <dl>
+        <dt>윈도우창 관련 이벤트</dt>
+        <dd>load : 페이지의 태그들이 다 로드됐을때 발생 * 페이지관련 이벤트</dd>
+        <dd>resize : 윈도우 크기가 조정됐을때 발생</dd>
+        <dd>scroll : 창에서 스크롤이 조정됐을때 발생</dd>
+    </dl>
+
+    <h2>고전이벤트방식으로 이벤트 핸들러(함수)등록하기</h2>
+    <h3>클릭하면 변경1</h3>
+    <h3>클릭하면 변경2</h3>
+    <h3>클릭하면 변경3</h3>
+    <script>
+        //h3를 클릭하면 글자색을 변경하는 이벤트핸들러 등록
+        let elements=document.querySelectorAll("h3");
+        console.log(elements);
+        //고전방식으로 이벤트연결하기 : onclick속성에 함수등록
+        elements[0].onclick=(e)=>{//e로 선언한 매개변수에는 Event객체 자동으로 대입 자바스크립트 컴파일러가 생성해서 넣어줌
+            console.log(e);
+            console.log(e.target);//이벤트가 발생한 객체
+            e.target.style.color="red";
+            console.log(e.x,e.y);//마우스클릭한 위치를 확인할 수 있음.
+        }
+        elements[1].onmouseenter=(e)=>{
+            console.log(e.target);
+            e.target.style.backgroundColor="gray";
+        }
+    </script>
+
+    <!-- <h2>연습- 고전이벤트방식으로 이벤트 핸들러 (함수) 등록하기</h2>
+    <h3>클릭하면 변경됨1</h3>
+    <h3>클릭하면 변경됨2</h3>
+    <h3>클릭하면 변경됨3</h3>
+
+    <script>
+        //h3를 클릭하면 글자색을 변경하는 이벤트 핸들러 등록
+        let elements=document.querySelectorAll("h3");
+        //고전방식으로 이벤트 연결하기 :onclick 속성에 함수등록
+        elements[0].onclick=(e)=>{
+            e.target.style.color="red";
+        }
+        elements[1].onmouseenter=(e)=>{
+            e.target.style.backgroundColor="brown";
+        }
+    </script> -->
+
+    <h2>인라인 이벤트설정</h2>
+    <p>
+        태그에 이벤트 속성에 직접 값(함수)을 넣는것
+    </p>
+    <!-- <h4 onmouseover="alert('마우스올라감');">인라인으로 이벤트설정</h4> -->
+    <!-- <h3 onmouseover="alert('마우스올라감');"> 연습 - 인라인 이벤트 설정</h3> -->
+    <h3>표준방식으로 이벤트 처리하기</h3>
+    <p>
+        addEventListener()함수를 이용하는 방식
+        Element객체에 있는 이벤트 연결함수임.
+        두개의 매개변수를 설정
+        첫번째매개변수 : 이벤트속성.
+        두번째매개변수 : 이벤트핸들러(함수) *매개변수로 event를 받음
+    </p>
+    <form action="">
+        <input type="text" name="userId" id="userId" placeholder="아이디입력"><br>
+        <input type="password" name="pw" id="pw" placeholder="비밀번호입력"><br>
+        <input type="password" id="pwck"><span id="result"></span>
+    </form>
+    <script>
+        let id=document.getElementById("userId");
+        let pw=document.getElementById("pw");
+        //표준방식으로 이벤트설정하기
+        id.addEventListener("keyup",(e)=>{
+            e.target.style.color="white";
+            e.target.style.backgroundColor="aqua";
+        });
+
+        //focus이벤트설정
+        id.addEventListener("focus",(e)=>{
+            e.target.style.backgroundColor="lime";
+        });
+
+        let pwck=document.getElementById("pwck");
+
+        //pwck.addEventListener("keyup",(e)=>{
+        pwck.addEventListener("blur",(e)=>{
+            let pw=document.getElementById("pw");
+            let result=document.getElementById("result");
+            if(pw.value==e.target.value){
+                result.innerHTML="비밀번호가 일치합니다.";
+                result.style.color="green";
+            }else{ 
+                result.innerHTML="비밀번호가 일치하지 않습니다";
+                result.style.color="red";
+            }
+        });
+
+    </script>
+
+    <select name="title" id="title">
+        <option value="제목">제목</option>
+        <option value="내용">내용</option>
+        <option value="작성자">작성자</option>
+    </select>
+    <input type="search" name="keyword" id="keyword">
+    <script>
+        let $select=document.getElementById("title");
+        $select.addEventListener("change",(e)=>{
+           //document.getElementById("keyword").focus();
+           console.log(e.target.nextElementSibling);
+           e.target.nextElementSibling.focus();
+        })
+    </script>
+
+
+    <h2>윈도우에 이벤트설정하기</h2>
+    <script>
+        window.addEventListener("resize",(e)=>{
+            console.log(e);
+            //변경되 윈도우의 길이 확인하기
+            console.log(e.target.innerWidth,e.target.innerHeight);
+        });
+         window.addEventListener("scroll",(e)=>{
+             console.log(e);
+             //스크롤 위치확인하기
+            console.log(window.scrollX,window.scrollY);
+         })
+    </script>
+
+    <h1>생성된 태그에 이벤트 설정하기</h1>
+    <button id="createTable">테이블생성</button>
+    <button id="addTr">행추가하기</button>
+    <!-- 
+        5*5테이블을 생성하시오. 테이블의 마지막 5열에는 버튼태그를 추가할 것 
+        버튼태그를 클릭하면 그 row의 배경색이 빨강색으로 변경하기!
+    -->
+    <script>
+        document.getElementById("addTr").addEventListener("click",e=>{
+            console.log(e.target.previousElementSibling);
+            const preElement=e.target.previousElementSibling;
+            console.log(preElement.children.length);
+            if(preElement.tagName=="TABLE"){
+                const tr=document.createElement("tr");
+                for(let i=0;i<5;i++){
+                    let td=document.createElement("td");
+                    td.innerText=`${preElement.children.length}행 ${i}열`;
+                    tr.appendChild(td);
+                }
+                preElement.appendChild(tr);
+            }else{
+                alert("추가할 테이블이 없습니다");
+            }
+        });
+        document.querySelector("#createTable").addEventListener("click",e=>{
+            let $table=document.createElement("table");
+            for(let i=0;i<5;i++){
+                let $tr=document.createElement("tr");
+                for(let j=0;j<5;j++){
+                    let $td=document.createElement("td");
+                    if(j==4){
+                        const btn=document.createElement("button");
+                        btn.innerText="변경";
+                        btn.addEventListener("click",e=>{
+                            //e.target.parentElement.parentElement.style.backgroundColor="red";
+                            $tr.style.backgroundColor="red";
+                        });
+                        $td.appendChild(btn);
+                    }else{
+                        $td.innerHTML=`${i}행 ${j}열`;
+                    }
+                    $tr.appendChild($td);
+                }
+                $table.appendChild($tr);
+            }
+            e.target.insertAdjacentElement("afterend",$table);
+        })
+    </script>
+
+    <h2>댓글추가하기</h2>
+    <input type="text" name="reply" id="reply">
+    <button id="btn">등록</button>
+    <div>
+    </div>
+    <script>
+        document.getElementById("btn").addEventListener("click",e=>{
+            const target=e.target.nextElementSibling;//div선택
+            const p=document.createElement("p");
+            p.innerText=document.getElementById("reply").value;
+            //답글버튼만들기
+            const btn=document.createElement("button");
+            btn.innerText="답글";
+            const container=document.createElement("div");
+            p.style.display="inline-block";
+            p.style.marginRight="20px";
+            container.appendChild(p);
+            //버튼에 이벤트추가하기
+            //버튼 누르면 답글을 입력할수 있는 창 만들기
+            btn.addEventListener("click",e=>{
+                //alert("댓글버튼클릭");
+                const input=document.createElement("input");
+                input.setAttribute("type","text");
+                input.style.marginRight="10px";
+                const container2=document.createElement("div");
+                container2.appendChild(input);
+                const btn2=document.createElement("button");
+                btn2.innerText="등록";
+                btn2.addEventListener("click",e=>{
+                    const val=e.target.previousElementSibling.value;//답글 input의 값을 가져옴
+                    const p2=document.createElement("p");
+                    p2.innerText=val;
+                    p2.style.marginLeft="20px";
+                    e.target.parentElement.insertAdjacentElement("beforebegin",p2);
+                    e.target.parentElement.remove();
+                });
+                container2.appendChild(btn2);
+                e.target.parentElement.insertAdjacentElement("afterend",container2);
+
+            });
+            container.appendChild(btn);
+            target.appendChild(container);
+            document.getElementById("reply").value="";
+        })
+    </script>
+
+    <h1>기본으로 설정된 이벤트 차단하기</h1>
+    <p>
+        a태그 -> 클릭시 페이지이동
+        input submit -> 클릭시 데이터 전송
+    </p>
+
+    <a id="check" href="http://www.naver.com">네이버</a>
+    <script>
+        let a=document.getElementById("check");
+        a.addEventListener("click",(e)=>{
+           // e.preventDefault();//기본이벤트차단
+        });
+    </script>
+
+    <form action="">
+        <input id="id" type="text" name="userId">
+        <input id="pw" type="password" name="password">
+        <input type="submit" value="로그인" onclick="return checkData();">
+    </form>
+    <script>
+        const checkData=()=>{
+            let id=document.getElementById("id");
+           // console.dir(id);
+            let password=document.getElementById("pw");
+            if(id.value.length<4){
+                alert("4글자 이상입력하세요");
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

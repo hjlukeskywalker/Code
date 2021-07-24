@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자활용하기</title>
+</head>
+<body>
+    <h2>연산자</h2>
+    <p>
+        연산자를 기본적으로 자바에서 사용했던 방식과 동일하게 사용을 함.
+    </p>
+    <input type="text" id="str">
+    <button onclick="addStr();">문자더하기</button>
+    <div id="result"></div>
+    <script>
+        function addStr(){
+            let inputStr=document.getElementById("str");
+            if('end'!=inputStr.value && '끝'!=inputStr.value){
+                document.getElementById("result").innerHTML+=inputStr.value;
+            }
+            inputStr.value="";
+        }
+    </script>
+    
+    <!-- <h2>연산자</h2>
+    <p>
+        연산자를 기본적으로 자바에서 사용했던 방식과 동일하게 사용을 함
+    </p>
+    <input type="text" id="str">
+    <button onclick="addstr()";>문자더하기</button>
+    <div id="result"></div>
+    <script>
+        function addstr(){
+            let inputstr=document.getElementById("str");
+            if('end'!=inputstr.value && '끝'!=inputstr.value){
+                document.getElementById("result").innerHTML+=inputstr.value
+            }
+            inputstr.value="";
+        }
+    </script> -->
+
+
+
+
+
+    <h3>=== 연산자와 !== 연산자</h3>   
+    <p>
+        자바스크립트의 유연성때문에 나온 연산자.
+    </p>
+    <script>
+        let su=100;
+        let strSu="100";
+        let su2=100;
+        console.log(su==strSu);//자료형을 보지않음! 값만보고 형변환해서 비교를 함.
+        console.log(su===Number(strSu));//자료형의 일치여부까지 확인을 함.
+        console.log(su===su2);
+    </script>
+
+    <h3>짧은 조건문 이용하기</h3>
+    <p>
+        && : 두개다 true일때만 true
+        || : 한개라도 true면 true
+    </p>
+    <script>
+        let num=98;
+        num%2==0&&alert("짝수");
+        num%2==0||alert("홀수");
+    </script>
+
+    <!-- input태그로 숫자를 입력받아 그 숫자가 홀수인지 짝수인지 출력하는
+    기능 구현하기
+    input, button누르면 div에 출력 -->
+
+    <input type="text" id="su">
+    <button onclick="checkSu();">확인</button>
+    <div id="result1"></div>
+    <script>
+        function checkSu(){
+            let inputSu=document.getElementById("su");
+            let result=document.getElementById("result1");
+            inputSu.value%2==0 && (result.innerHTML="짝수");
+            inputSu.value%2==0 || (result.innerHTML="홀수");
+        }
+    </script>
+
+    
+    <input type="text" id="su1">
+    <button onclick="checkSU();">확인</button>
+    <div id="result2"></div>
+    <script>
+        function checkSU(){
+            let inputsu=document.getElementById("su1");
+            let result=document.getElementById("result2");
+            inputsu.value%2==0 && (result.innerHTML="짝수");
+            inputsu.value%2==0|| (result.innerHTML="홀수");
+        }
+    </script>
+    </script>
+</body>
+</html>
